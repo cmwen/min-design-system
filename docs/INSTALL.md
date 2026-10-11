@@ -12,12 +12,12 @@ npm run check
 npm pack
 ```
 
-`npm pack` runs the production build through `prepack` and writes `cmwen-min-design-system-0.1.0.tgz`. It includes modular CSS, the standalone bundle, the tab helper, the MIT license, and these instructions. It excludes the playground, Storybook, demo brand icon, fonts, and development dependencies. Nothing is published to npm.
+`npm pack` runs the production build through `prepack` and writes `cmwen-min-design-system-0.1.1.tgz`. It includes modular CSS, the standalone bundle, the tab helper, the MIT license, and these instructions. It excludes the playground, Storybook, demo brand icon, fonts, and development dependencies. Nothing is published to npm.
 
 Copy that file to your other app and install it:
 
 ```sh
-npm install ./vendor/cmwen-min-design-system-0.1.0.tgz
+npm install ./vendor/cmwen-min-design-system-0.1.1.tgz
 ```
 
 Commit the tarball (if using a local vendor path) and your lockfile so CI can reproduce the installation. Increment the version before distributing a changed package; replace the tarball and reinstall deliberately rather than reusing a mutable URL.
@@ -98,6 +98,6 @@ Try the components at your actual container widths and with keyboard/reduced mot
 
 ## Publish on GitHub Pages and npm
 
-Follow [RELEASE.md](RELEASE.md) to configure the repository and npm package name, enable GitHub Pages, publish the first version, and configure OIDC trusted publishing for subsequent GitHub Releases. The package is configured as `@cmwen/min-design-system` in the public repository `cmwen/min-design-system`. Registry publication and remote Pages deployment have not happened in this workspace.
+Follow [RELEASE.md](RELEASE.md) to configure the repository and npm package name, enable GitHub Pages, publish the first version, and configure OIDC trusted publishing for subsequent GitHub Releases. The package is configured as `@cmwen/min-design-system` in the public repository `cmwen/min-design-system`. See [VALIDATION.md](VALIDATION.md) for remote publication and deployment verification.
 
-After publication, install your chosen package name from npm and use the same imports shown above. Scoped names work too; replace `@cmwen/min-design-system` with your published name in every import.
+Install registry releases with `npm install @cmwen/min-design-system` and use the same imports shown above.

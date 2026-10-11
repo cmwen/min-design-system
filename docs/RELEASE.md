@@ -19,7 +19,7 @@ npm run release:configure -- --repo cmwen/min-design-system --package @cmwen/min
 npm run release:check
 ```
 
-This sets repository, homepage, bugs, npm registry/public access and `private: false`, and synchronizes the lockfile's package name. The identity checker rejects mismatched repository/tag values and runtime dependencies. It does not publish anything. For a custom domain, update `homepage` and set the repository variable `FF_BASE` to `/`.
+This sets repository, homepage, bugs, npm registry/public access and `private: false`, and synchronizes the lockfile's package name. The identity checker rejects mismatched repository/tag values and runtime dependencies. It does not publish anything. For a dedicated custom domain served at its root, update `homepage` and set the repository variable `FF_BASE` to `/`. Project sites inheriting the account domain retain their repository subpath.
 
 Create or use the chosen repository and commit this workspace there, including `package-lock.json`, `.github/`, source, stories, tests and docs. Ignore node_modules, dist, tarballs and test reports. In a normal checkout, push the changes to the default branch. This workspace's read-only placeholder `.git` cannot serve as that checkout; use a real checkout or upload the source through GitHub.
 
@@ -80,7 +80,7 @@ git push origin HEAD --follow-tags
 
 Create and publish a GitHub Release using that version's tag (`v0.1.1`, for example) and targeting the default branch. `publish.yml` checks out the exact tag, verifies that the commit belongs to the default branch and the tag matches `package.json`, reruns the complete quality checks, then publishes to npm using OIDC. Stable versions use `latest`; prereleases use `next`. The publish step skips lifecycle scripts because the build and tests have already finished. It does not run on ordinary pushes or pull requests.
 
-The initial manual version is already published: do not trigger an automated publication of the same version. npm version numbers cannot be reused. If a workflow fails after publication, check the registry before retrying.
+After the initial manual version is published, do not trigger an automated publication of the same version. npm version numbers cannot be reused. If a workflow fails after publication, check the registry before retrying.
 
 ## Install in another app
 

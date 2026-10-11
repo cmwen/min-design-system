@@ -32,7 +32,7 @@ npm run test:package                # Install and build an isolated Vite consume
 
 ## Install in your other apps
 
-Run `npm pack` to create `cmwen-min-design-system-0.1.0.tgz`, then `npm install ./vendor/cmwen-min-design-system-0.1.0.tgz` in your other app. Import `@cmwen/min-design-system` for modular CSS or `@cmwen/min-design-system/forest-and-fern.css` for the standalone bundle. See [the complete installation guide](docs/INSTALL.md) for theme boundaries, native recipes, optional tabs, framework integration and versioning. The [release guide](docs/RELEASE.md) covers GitHub Pages and npm trusted publishing. Nothing has been published to npm yet.
+Run `npm pack` to create `cmwen-min-design-system-0.1.1.tgz`, then `npm install ./vendor/cmwen-min-design-system-0.1.1.tgz` in your other app. Import `@cmwen/min-design-system` for modular CSS or `@cmwen/min-design-system/forest-and-fern.css` for the standalone bundle. See [the complete installation guide](docs/INSTALL.md) for theme boundaries, native recipes, optional tabs, framework integration and versioning. The [release guide](docs/RELEASE.md) covers GitHub Pages and npm trusted publishing. Install registry releases with `npm install @cmwen/min-design-system`.
 
 ## Use in plain HTML
 
@@ -68,7 +68,7 @@ export function Actions() {
 }
 ```
 
-This example does not add React to the package. Alternatively vendor the `src/` directory at the **v0.1.0** release/tag or a recorded commit, and import `src/index.css` through your bundler. Prefer versioned artifacts over mutable Pages/main URLs. The package is configured as `@cmwen/min-design-system`, with public releases built from `cmwen/min-design-system` on GitHub. Follow [the release guide](docs/RELEASE.md).
+This example does not add React to the package. Alternatively vendor the `src/` directory at the **v0.1.1** release/tag or a recorded commit, and import `src/index.css` through your bundler. Prefer versioned artifacts over mutable Pages/main URLs. The package is configured as `@cmwen/min-design-system`, with public releases built from `cmwen/min-design-system` on GitHub. Follow [the release guide](docs/RELEASE.md).
 
 ## Themes, geometry, and motion
 
@@ -106,9 +106,9 @@ Vite builds all pages together. Default base: `/forest-and-fern/`. Set `FF_BASE=
 FF_BASE=/your-repo/ npm run build
 ```
 
-The [Actions workflow](.github/workflows/deploy.yml) runs checks and browser tests, records the benchmark, uploads reports, and deploys only the repository’s default branch. It derives the base from the actual repository name. Enable **Settings → Pages → Source: GitHub Actions** once. Deployment uses only the repository’s `pages: write` and `id-token: write` permissions. A custom domain or user site should set the workflow’s `FF_BASE` to `/` in both build and test steps.
+The [Actions workflow](.github/workflows/deploy.yml) runs checks and browser tests, records the benchmark, uploads reports, and deploys only the repository’s default branch. It derives the base from the actual repository name. Enable **Settings → Pages → Source: GitHub Actions** once. Deployment uses only the repository’s `pages: write` and `id-token: write` permissions. For a dedicated custom domain served at its root, set repository variable `FF_BASE` to `/`. This project inherits `cmwen.dev` and retains `/min-design-system/`.
 
-This workspace arrived with an empty read-only `.git` placeholder, rather than an attached Git checkout or GitHub remote. The deployment configuration is complete; publication, a release tag, and a live Pages URL require a real repository attachment and Pages setup.
+The public source repository is [cmwen/min-design-system](https://github.com/cmwen/min-design-system). The configured Pages site is [cmwen.dev/min-design-system](https://cmwen.dev/min-design-system/), with [Storybook](https://cmwen.dev/min-design-system/storybook/) alongside the playground. Deployment verification is recorded in [VALIDATION.md](docs/VALIDATION.md).
 
 ## Delivery phases
 
