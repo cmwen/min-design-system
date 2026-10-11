@@ -7,11 +7,13 @@ import { build } from 'vite';
 const packageName = JSON.parse(await readFile('package.json', 'utf8')).name;
 const directory = await mkdtemp(join(tmpdir(), 'forest-fern-consumer-'));
 try {
-  const packed = JSON.parse(
+  const packOutput = JSON.parse(
     execFileSync('npm', ['pack', '--ignore-scripts', '--json', '--pack-destination', directory], {
       encoding: 'utf8',
     }),
-  )[0];
+  );
+  const packed = Array.isArray(packOutput) ? packOutput[0] : packOutput[packageName];
+  assert.ok(packed?.files, `Missing pack metadata for ${packageName}`);
   const paths = packed.files.map((file) => file.path);
   assert.ok(paths.includes('dist/assets/forest-and-fern.css'));
   assert.ok(paths.includes('src/tabs.js'));

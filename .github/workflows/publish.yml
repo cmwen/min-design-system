@@ -2,25 +2,31 @@ name: Publish npm package
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to publish or retry
+        required: true
+        type: string
 permissions:
   contents: read
 concurrency:
-  group: npm-${{ github.event.release.tag_name }}
+  group: npm-${{ github.event.release.tag_name || inputs.tag }}
   cancel-in-progress: false
 jobs:
   publish:
-    if: github.event.release.target_commitish == github.event.repository.default_branch
+    if: github.event_name == 'workflow_dispatch' || github.event.release.target_commitish == github.event.repository.default_branch
     runs-on: ubuntu-latest
     environment: npm
     permissions:
       contents: read
       id-token: write
     env:
-      RELEASE_TAG: ${{ github.event.release.tag_name }}
+      RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
     steps:
       - uses: actions/checkout@v7.0.1
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.release.tag_name || inputs.tag }}
           persist-credentials: false
           fetch-depth: 0
       - uses: actions/setup-node@v7.1.0
@@ -28,7 +34,7 @@ jobs:
           node-version: '24.15.0'
           registry-url: https://registry.npmjs.org
           package-manager-cache: false
-      - run: npm install --global npm@12.2.0
+      - run: npm install --global npm@11.6.2
       - name: Verify release commit belongs to the default branch
         run: git merge-base --is-ancestor HEAD "origin/$DEFAULT_BRANCH"
         env:

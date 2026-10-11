@@ -4,7 +4,7 @@ One GitHub repository contains the CSS package, playground, examples and HTML/Vi
 
 ## Configured setup
 
-Core versions were checked against npm on 11 October 2026: Vite 8.3.4, Storybook 10.6.1 and Playwright 1.64.0 match the registry's latest tags. The lint environment helper was updated to globals 17.13.0. CI uses Node 24 and current official GitHub Actions releases; npm publishing uses npm 12.2.0. Dependabot checks npm and GitHub Actions weekly, grouping Storybook updates together.
+Core versions were checked against npm on 11 October 2026: Vite 8.3.4, Storybook 10.6.1 and Playwright 1.64.0 match the registry's latest tags. The lint environment helper was updated to globals 17.13.0. CI uses Node 24 and current official GitHub Actions releases; npm publishing pins npm 11.6.2, which supports trusted publishing and remains compatible with the first version tags. The package-consumer check also accepts npm 12’s object-shaped pack metadata. Dependabot checks npm and GitHub Actions weekly, grouping Storybook updates together.
 
 The approved destination is the public GitHub repository `cmwen/min-design-system` and the public npm package `@cmwen/min-design-system`. Package metadata is configured for these names. Remote publication status is recorded in VALIDATION.md.
 
@@ -78,7 +78,7 @@ npm version patch
 git push origin HEAD --follow-tags
 ```
 
-Create and publish a GitHub Release using that version's tag (`v0.1.1`, for example) and targeting the default branch. `publish.yml` checks out the exact tag, verifies that the commit belongs to the default branch and the tag matches `package.json`, reruns the complete quality checks, then publishes to npm using OIDC. Stable versions use `latest`; prereleases use `next`. The publish step skips lifecycle scripts because the build and tests have already finished. It does not run on ordinary pushes or pull requests.
+Create and publish a GitHub Release using that version's tag (`v0.1.1`, for example) and targeting the default branch. `publish.yml` checks out the exact tag, verifies that the commit belongs to the default branch and the tag matches `package.json`, reruns the complete quality checks, then publishes to npm using OIDC. Stable versions use `latest`; prereleases use `next`. The publish step skips lifecycle scripts because the build and tests have already finished. It does not run on ordinary pushes or pull requests. To retry an existing tag after repairing the workflow, select **Actions → Publish npm package → Run workflow** on the default branch and supply the existing tag. This uses the current workflow while preserving the tagged package source. Check that the version is absent from npm before retrying; never move a published version tag.
 
 After the initial manual version is published, do not trigger an automated publication of the same version. npm version numbers cannot be reused. If a workflow fails after publication, check the registry before retrying.
 
