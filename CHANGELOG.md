@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 — 2026-10-12
+
+- Add the optional `@cmwen/min-design-system/theme` helper for repeatable seeded corners and static SVG wave masks, with no runtime dependencies.
+- Add independent top, right, bottom, and left wave counts, including straight edges at count 0.
+- Add Seed, Variation, Randomize, per-edge count, and Export CSS controls to the Shape Lab, with browser preference persistence and consumption examples.
+- Support static CSS export for use without runtime JavaScript; keep light/dark palettes independent of generated geometry.
+- Validate deterministic geometry, edge independence, exported CSS, persisted settings, package imports, accessibility, and responsive layouts.
+
 ## 0.2.0 — 2026-10-11
 
 - Add inherited compact/comfortable density, configurable spacing, and small/large controls with 44px minimum touch targets on coarse-pointer devices.

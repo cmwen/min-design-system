@@ -12,12 +12,12 @@ npm run check
 npm pack
 ```
 
-`npm pack` runs the production build through `prepack` and writes `cmwen-min-design-system-0.2.0.tgz`. It includes modular CSS, the standalone bundle, the tab helper, the MIT license, and these instructions. It excludes the playground, Storybook, demo brand icon, fonts, and development dependencies. Nothing is published to npm.
+`npm pack` runs the production build through `prepack` and writes `cmwen-min-design-system-0.3.0.tgz`. It includes modular CSS, the standalone bundle, the optional tab and seeded-theme helpers, the MIT license, and these instructions. It excludes the playground, Storybook, demo brand icon, fonts, and development dependencies. Nothing is published to npm.
 
 Copy that file to your other app and install it:
 
 ```sh
-npm install ./vendor/cmwen-min-design-system-0.2.0.tgz
+npm install ./vendor/cmwen-min-design-system-0.3.0.tgz
 ```
 
 Commit the tarball (if using a local vendor path) and your lockfile so CI can reproduce the installation. Increment the version before distributing a changed package; replace the tarball and reinstall deliberately rather than reusing a mutable URL.
@@ -149,3 +149,32 @@ Use a real button with `.ff-selectable` and `aria-pressed` for independent card 
 `.ff-field` groups labels, controls, help, and validation text. Your app sets `aria-invalid` and connects visible messages with `aria-describedby`. `.ff-alert` accepts a message and optional dismiss button; your app handles dismissal, the `hidden` attribute, and focus restoration. Use `role="alert"` for an urgent newly inserted error or `role="status"` for a non-urgent update. Static notices need neither live role. `.ff-busy` supplies a static progress marker beside visible loading text; use `role="status"` to announce changes and `aria-busy="true"` on the updating region. For busy buttons, supply progress text, set `aria-busy`, and disable repeat submissions in your app. `.ff-empty-state` groups an explanation and optional next action.
 
 `.ff-sidebar-nav` and `.ff-bottom-nav` style native navigation landmarks containing `.ff-nav-link` anchors. Set `aria-current="page"` on the active link and optionally include a textual `.ff-pill` count. Wrap both navigations in `.ff-responsive-nav` to show the sidebar above 640px and bottom navigation at 640px or below. Use matching destinations and labels; only the visible landmark is exposed to assistive technology. Bottom navigation stays in document flow, wraps long content, and includes safe-area bottom padding. If your app fixes it to the viewport, reserve matching content space and check focused controls remain visible. Safe-area values require a host viewport declaration with `viewport-fit=cover`.
+
+## Seeded geometry
+
+Explore seed, variation, wave strength, and separate edge counts in the playground Shape Lab.
+Export CSS, load it after the library, and add `ff-seeded-theme` to your `.ff-theme` boundary.
+The exported theme works without runtime JavaScript. Descendant shape/wave presets override inherited tokens.
+
+For runtime or build-time generation:
+
+```js
+import { createTheme } from '@cmwen/min-design-system/theme';
+
+const theme = createTheme({
+  seed: 'my-company',
+  shape: 'organic',
+  variation: 0.6,
+  waveStrength: 3,
+  waveCounts: { top: 4, right: 2, bottom: 4, left: 2 },
+});
+theme.apply(document.querySelector('.ff-theme'));
+// Or save theme.toCSS() as a stylesheet and use .ff-seeded-theme.
+```
+
+Seeds are nonempty strings of up to 200 characters. Shapes are `none`, `soft`, `organic`
+or `expressive`. Variation is 0–1; wave strength and each edge count are integers 0–12.
+Wave strength defaults to 0 (off), and counts default to 4 per edge. One wave is a crest
+and a trough; count 0 makes an edge straight. Changing one count keeps other edges stable.
+The same seed/settings and generator version produce the same geometry. The generator
+version is `theme.version` (currently 1); save it with the seed, or export CSS to freeze the look.

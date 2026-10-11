@@ -1,6 +1,6 @@
 {
   "name": "@cmwen/min-design-system",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CSS-first organic themes for native HTML",
   "type": "module",
   "license": "MIT",
@@ -18,7 +18,8 @@
     ".": "./src/index.css",
     "./*.css": "./src/*.css",
     "./forest-and-fern.css": "./dist/assets/forest-and-fern.css",
-    "./tabs": "./src/tabs.js"
+    "./tabs": "./src/tabs.js",
+    "./theme": "./src/theme.js"
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0",

@@ -17,6 +17,7 @@ try {
   const paths = packed.files.map((file) => file.path);
   assert.ok(paths.includes('dist/assets/forest-and-fern.css'));
   assert.ok(paths.includes('src/tabs.js'));
+  assert.ok(paths.includes('src/theme.js'));
   assert.ok(paths.includes('docs/INSTALL.md'));
   assert.ok(
     !paths.some((path) => /^(stories|playground|public|\.storybook|node_modules)\//.test(path)),
@@ -42,7 +43,7 @@ try {
   );
   await writeFile(
     join(consumer, 'main.js'),
-    `import ${JSON.stringify(packageName)};\nimport ${JSON.stringify(`${packageName}/forest-and-fern.css`)};\nimport { initTabs } from ${JSON.stringify(`${packageName}/tabs`)};\ninitTabs(document);\n`,
+    `import ${JSON.stringify(packageName)};\nimport ${JSON.stringify(`${packageName}/forest-and-fern.css`)};\nimport { initTabs } from ${JSON.stringify(`${packageName}/tabs`)};\nimport { createTheme } from ${JSON.stringify(`${packageName}/theme`)};\ninitTabs(document);\ncreateTheme({ seed: 'consumer' }).apply(document.querySelector('.ff-theme'));\n`,
   );
   await build({
     configFile: false,
@@ -51,7 +52,7 @@ try {
     build: { outDir: resolve(consumer, 'dist') },
   });
   console.log(
-    `Package smoke passed: ${paths.length} files; CSS and optional tabs import in an isolated Vite app; no runtime dependencies.`,
+    `Package smoke passed: ${paths.length} files; CSS, optional tabs and seeded themes import in an isolated Vite app; no runtime dependencies.`,
   );
 } finally {
   await rm(directory, { recursive: true, force: true });

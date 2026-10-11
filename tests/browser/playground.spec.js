@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { readFile } from 'node:fs/promises';
 
 test('theme toggles, persists, and nested boundaries retain their palette', async ({ page }) => {
   await page.goto('');
@@ -24,7 +25,6 @@ test('shape controls alter geometry, masks, border, and width', async ({ page })
     initialRadius,
   );
   await page.locator('#wave-strength').fill('8');
-  await expect(preview).toHaveAttribute('data-ff-wave-strength', '8');
   expect(await preview.evaluate((node) => getComputedStyle(node, '::before').maskImage)).toContain(
     'data:image/svg+xml',
   );
@@ -36,7 +36,51 @@ test('shape controls alter geometry, masks, border, and width', async ({ page })
   expect(await preview.evaluate((node) => getComputedStyle(node, '::after').top)).toBe('4px');
   await page.locator('#sample-size').fill('200');
   await expect(preview).toHaveCSS('max-width', '200px');
-  await expect(page.locator('#shape-code')).toContainText('data-ff-shape="expressive"');
+  await expect(page.locator('#shape-code')).toContainText('"shape": "expressive"');
+});
+
+test('seeded shapes randomize, persist, and export reusable CSS', async ({ page }) => {
+  await page.goto('#shape-lab');
+  const preview = page.locator('#shape-preview');
+  const geometry = () =>
+    preview.evaluate((node) => ({
+      radius: getComputedStyle(node).borderRadius,
+      mask: getComputedStyle(node, '::before').maskImage,
+      control: getComputedStyle(node.querySelector('button')).borderRadius,
+    }));
+  await page.locator('#shape-seed').fill('my-company');
+  await page.locator('#wave-count-top').fill('2');
+  await page.locator('#wave-count-right').fill('0');
+  await page.locator('#wave-count-bottom').fill('6');
+  await page.locator('#wave-count-left').fill('3');
+  const first = await geometry();
+  await page.getByRole('button', { name: 'Randomize', exact: true }).click();
+  expect(await geometry()).not.toEqual(first);
+  const seed = await page.locator('#shape-seed').inputValue();
+  const randomized = await geometry();
+  await page.reload();
+  await expect(page.locator('#shape-seed')).toHaveValue(seed);
+  for (const [edge, count] of Object.entries({ top: '2', right: '0', bottom: '6', left: '3' })) {
+    await expect(page.locator(`#wave-count-${edge}`)).toHaveValue(count);
+    await expect(page.locator(`#wave-count-${edge}-output`)).toHaveText(count);
+  }
+  expect(await geometry()).toEqual(randomized);
+  await page.getByRole('button', { name: 'Switch to dark theme' }).click();
+  expect(await geometry()).toEqual(randomized);
+  await page.locator('#shape-seed').fill('my-company');
+  expect(await geometry()).toEqual(first);
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export CSS', exact: true }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toBe('forest-and-fern-seeded-theme.css');
+  const css = await readFile(await download.path(), 'utf8');
+  await page.addStyleTag({ content: css });
+  await preview.evaluate((node) => {
+    node.removeAttribute('style');
+    node.removeAttribute('data-ff-shape');
+    node.classList.add('ff-seeded-theme');
+  });
+  expect(await geometry()).toEqual(first);
 });
 
 test('palette editing changes only the preview and resets', async ({ page }) => {

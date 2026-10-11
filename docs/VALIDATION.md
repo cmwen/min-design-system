@@ -72,3 +72,18 @@ This smoke test does **not** measure GPU raster/paint, hardware battery use, rea
 The public repository [cmwen/min-design-system](https://github.com/cmwen/min-design-system) has been created and the source pushed using a temporary checkout because this workspace has a read-only `.git` placeholder. Pages is configured for GitHub Actions with HTTPS and inherits `cmwen.dev`. The first CI run exposed incomplete optional dependencies in the lockfile; a clean lockfile was generated and verified with npm 12. [Actions run 38113547489](https://github.com/cmwen/min-design-system/actions/runs/38113547489) passed all quality gates: 62 unit checks, 216 browser checks (19 intentional skips), 23 Storybook checks, package-consumer validation and benchmark. Pages deployment succeeded. The live playground, components, docs and rendered Storybook story returned HTTP 200 with no JavaScript page errors in Chromium at `https://cmwen.dev/min-design-system/`. npm registry installation of `0.1.0` succeeded. The trusted publisher is configured for `publish.yml` and environment `npm`. The approved `v0.1.1` release completed through [trusted-publishing run 38114183506](https://github.com/cmwen/min-design-system/actions/runs/38114183506), including all quality gates and a signed npm provenance statement. [Pages run 38114177046](https://github.com/cmwen/min-design-system/actions/runs/38114177046) succeeded; the live CSS banner identifies version `0.1.1`. The initial attempt exposed npm 12’s changed pack JSON format. The consumer harness now supports both npm 11 and 12; the release workflow pins compatible npm 11.6.2 and supports retries of an existing immutable tag from the default branch. The version tag and tagged package source were preserved.
 
 Before release, check actual stable Safari and iOS Safari, Android Chrome, keyboard-only operation, VoiceOver/NVDA labels and announcements, real 200% browser zoom, and forced colors on supported hardware. The automated browser engines and emulations are useful evidence, not substitutes for those checks.
+
+## 0.3.0 release validation — 12 October 2026
+
+The seeded geometry release passes lint, 80 unit checks, production and Storybook builds,
+241 browser checks across Chromium, Firefox, WebKit and mobile emulations (19 intentional
+visual/forced-color skips), 24 Storybook checks, isolated package installation, and the
+50-surface benchmark. The consumer check imports CSS, tabs, and the optional seeded-theme
+helper from the packed 0.3.0 package. The tarball contains 21 files and has no runtime dependencies.
+
+Seeded coverage verifies repeatability, independent edge counts, zero/straight edges,
+saved settings, randomization, palette-independent geometry, and downloaded CSS matching
+the live preview. The default four waves per edge preserve the previous v1 silhouette.
+Playground light/dark screenshot baselines include the new controls.
+
+Remote npm publication and Pages deployment are verified after publishing the tagged release.

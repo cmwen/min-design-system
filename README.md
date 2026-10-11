@@ -2,7 +2,7 @@
 
 A CSS-first, framework-agnostic look and feel for native HTML. Warm paper and deep forest greens, softly asymmetric corners, optional static wave edges, and small, accessible state transitions.
 
-The CSS is the product. No React, Tailwind, Web Components, or runtime dependency in the CSS package. An optional vanilla tab helper is exported separately. The Vite site uses small vanilla JavaScript modules to demonstrate the CSS.
+The CSS is the product. No React, Tailwind, Web Components, or runtime dependency in the CSS package. Optional vanilla tab and seeded geometry helpers are exported separately. The Vite site uses small vanilla JavaScript modules to demonstrate the CSS.
 
 ## Run locally
 
@@ -32,7 +32,7 @@ npm run test:package                # Install and build an isolated Vite consume
 
 ## Install in your other apps
 
-Run `npm pack` to create `cmwen-min-design-system-0.2.0.tgz`, then `npm install ./vendor/cmwen-min-design-system-0.2.0.tgz` in your other app. Import `@cmwen/min-design-system` for modular CSS or `@cmwen/min-design-system/forest-and-fern.css` for the standalone bundle. See [the complete installation guide](docs/INSTALL.md) for theme boundaries, native recipes, optional tabs, framework integration and versioning. The [release guide](docs/RELEASE.md) covers GitHub Pages and npm trusted publishing. Install registry releases with `npm install @cmwen/min-design-system`.
+Run `npm pack` to create `cmwen-min-design-system-0.3.0.tgz`, then `npm install ./vendor/cmwen-min-design-system-0.3.0.tgz` in your other app. Import `@cmwen/min-design-system` for modular CSS or `@cmwen/min-design-system/forest-and-fern.css` for the standalone bundle. See [the complete installation guide](docs/INSTALL.md) for theme boundaries, native recipes, optional tabs, framework integration and versioning. The [release guide](docs/RELEASE.md) covers GitHub Pages and npm trusted publishing. Install registry releases with `npm install @cmwen/min-design-system`.
 
 ## Use in plain HTML
 
@@ -68,7 +68,7 @@ export function Actions() {
 }
 ```
 
-This example does not add React to the package. Alternatively vendor the `src/` directory at the **v0.2.0** release/tag or a recorded commit, and import `src/index.css` through your bundler. Prefer versioned artifacts over mutable Pages/main URLs. The package is configured as `@cmwen/min-design-system`, with public releases built from `cmwen/min-design-system` on GitHub. Follow [the release guide](docs/RELEASE.md).
+This example does not add React to the package. Alternatively vendor the `src/` directory at the **v0.3.0** release/tag or a recorded commit, and import `src/index.css` through your bundler. Prefer versioned artifacts over mutable Pages/main URLs. The package is configured as `@cmwen/min-design-system`, with public releases built from `cmwen/min-design-system` on GitHub. Follow [the release guide](docs/RELEASE.md).
 
 ## Themes, geometry, and motion
 
@@ -83,6 +83,44 @@ The wave engine uses precomputed SVG silhouettes on decorative pseudo-elements. 
 The range is native, with separate WebKit/Firefox thumb and track rules. Radio and checkbox glyphs use native rendering and `accent-color`; selects retain the platform popup and arrow. The styled switch remains a checkbox. Forced colors restores its platform rendering. Use real labels, fieldsets/legends, disabled attributes, and described validation messages.
 
 See [the complete API documentation](docs/index.html) and [architecture decisions](docs/DECISIONS.md).
+
+## Seeded shapes
+
+The Shape Lab includes Seed, Variation, per-edge wave counts, Randomize, and Export CSS controls. Settings persist
+when browser storage is available. Randomize creates a new seed; the same seed and settings
+reproduce the same corners and static waves. Variation 0 retains the original preset geometry.
+Light/dark colors are independent of the seed.
+
+Download the generated CSS, load it after the library stylesheet, and add `ff-seeded-theme`
+to a `.ff-theme` boundary or individual card. Its tokens are inherited by cards and controls;
+explicit shape/wave presets on descendants override inherited values. A single exported
+stylesheet requires no JavaScript. Sample width only affects the playground.
+
+For runtime or build-time generation, use the optional helper:
+
+```js
+import '@cmwen/min-design-system';
+import { createTheme } from '@cmwen/min-design-system/theme';
+
+const theme = createTheme({
+  seed: 'my-company', // nonempty string, up to 200 characters
+  shape: 'organic', // none | soft | organic | expressive
+  variation: 0.6, // 0–1
+  waveStrength: 3, // integer 0–12; default 0 (off)
+  waveCounts: { top: 4, right: 2, bottom: 4, left: 2 }, // each 0–12; default 4 per edge
+});
+theme.apply(document.querySelector('.ff-theme'));
+// Or write theme.toCSS() to a file; its selector is .ff-seeded-theme.
+```
+
+`theme.tokens` contains the three generated CSS custom properties. `theme.version` is 1;
+record the generator/package version with saved seeds, or export CSS to freeze the appearance.
+For per-card variation, derive a seed from a stable ID, such as `my-company:project-123`.
+The helper generates geometry without accessing the DOM until `apply()` is called.
+Each wave is a crest and a trough. Set an edge count to 0 for a straight edge;
+all four counts at 0 remove the mask. Changing one edge's count leaves the other
+edges' curves unchanged. Corners use CSS elliptical border radii, and waves use
+generated static SVG paths embedded in CSS masks. Exported CSS needs no runtime JavaScript.
 
 ## Typography
 

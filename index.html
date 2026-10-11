@@ -156,6 +156,40 @@
           </div>
           <div class="lab-layout">
             <div class="ff-card">
+              <label class="field" for="shape-seed"
+                >Seed
+                <input
+                  class="ff-input"
+                  id="shape-seed"
+                  type="text"
+                  value="forest-and-fern"
+                  maxlength="200"
+                  aria-describedby="shape-seed-help"
+                />
+              </label>
+              <p class="small" id="shape-seed-help">
+                The same seed and settings produce the same shape. Your settings are saved on this
+                browser.
+              </p>
+              <div class="button-row">
+                <button class="ff-button" id="shape-randomize" type="button">Randomize</button>
+                <button class="ff-button ff-button-secondary" id="shape-export" type="button">
+                  Export CSS
+                </button>
+              </div>
+              <label class="field" for="shape-variation"
+                >Variation
+                <output id="variation-output" for="shape-variation" class="output">60%</output>
+                <input
+                  class="ff-range"
+                  id="shape-variation"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.05"
+                  value="0.6"
+                />
+              </label>
               <label class="field" for="shape-preset"
                 >Corner geometry<select class="ff-select" id="shape-preset">
                   <option value="none">None</option>
@@ -173,14 +207,73 @@
                 />Wave edges</label
               ><label class="field" for="wave-strength"
                 >Wave strength <output id="wave-output" for="wave-strength" class="output">3</output
-                ><input
-                  class="ff-range"
-                  id="wave-strength"
-                  type="range"
-                  min="0"
-                  max="12"
-                  value="3" /></label
-              ><label class="field" for="border-width"
+                ><input class="ff-range" id="wave-strength" type="range" min="0" max="12" value="3"
+              /></label>
+              <fieldset>
+                <legend>Waves per edge</legend>
+                <p class="small">
+                  One wave is a crest and a trough. Set an edge to 0 to make it straight.
+                </p>
+                <label class="field" for="wave-count-top"
+                  >Top waves
+                  <output id="wave-count-top-output" for="wave-count-top" class="output">4</output>
+                  <input
+                    class="ff-range"
+                    id="wave-count-top"
+                    type="range"
+                    min="0"
+                    max="12"
+                    step="1"
+                    value="4"
+                  />
+                </label>
+                <label class="field" for="wave-count-right"
+                  >Right waves
+                  <output id="wave-count-right-output" for="wave-count-right" class="output"
+                    >4</output
+                  >
+                  <input
+                    class="ff-range"
+                    id="wave-count-right"
+                    type="range"
+                    min="0"
+                    max="12"
+                    step="1"
+                    value="4"
+                  />
+                </label>
+                <label class="field" for="wave-count-bottom"
+                  >Bottom waves
+                  <output id="wave-count-bottom-output" for="wave-count-bottom" class="output"
+                    >4</output
+                  >
+                  <input
+                    class="ff-range"
+                    id="wave-count-bottom"
+                    type="range"
+                    min="0"
+                    max="12"
+                    step="1"
+                    value="4"
+                  />
+                </label>
+                <label class="field" for="wave-count-left"
+                  >Left waves
+                  <output id="wave-count-left-output" for="wave-count-left" class="output"
+                    >4</output
+                  >
+                  <input
+                    class="ff-range"
+                    id="wave-count-left"
+                    type="range"
+                    min="0"
+                    max="12"
+                    step="1"
+                    value="4"
+                  />
+                </label>
+              </fieldset>
+              <label class="field" for="border-width"
                 >Border thickness
                 <output id="border-output" for="border-width" class="output">1.5 px</output
                 ><input
@@ -206,12 +299,7 @@
             </div>
             <div>
               <div class="shape-stage" id="shape-stage">
-                <article
-                  id="shape-preview"
-                  class="ff-card"
-                  data-ff-shape="organic"
-                  data-ff-wave-strength="3"
-                >
+                <article id="shape-preview" class="ff-card" data-ff-shape="organic">
                   <span class="shape-glyph" aria-hidden="true">✳</span>
                   <h3>A living surface</h3>
                   <p class="small">
@@ -226,9 +314,12 @@
               </div>
               <pre class="lab-code"><code id="shape-code"></code></pre>
               <p class="small">
-                Static SVG silhouettes, scaled to the surface. Strength is relative to size; 0
-                restores pure CSS corners. No filters touch the content.
+                Seeded corners and static SVG waves. Variation 0 uses the original geometry; wave
+                strength 0 restores pure CSS corners. Export CSS and add
+                <code>ff-seeded-theme</code> to a theme boundary or card. Explicit shape/wave
+                presets on descendants override inherited geometry.
               </p>
+              <p class="small" id="shape-status" role="status"></p>
             </div>
           </div>
         </section>

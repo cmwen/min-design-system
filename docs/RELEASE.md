@@ -1,6 +1,6 @@
 # Publish to GitHub Pages and npm
 
-One GitHub repository contains the CSS package, playground, examples and HTML/Vite Storybook. Pages publishes the site and Storybook together; npm publishes the reusable CSS and optional tab helper.
+One GitHub repository contains the CSS package, playground, examples and HTML/Vite Storybook. Pages publishes the site and Storybook together; npm publishes the reusable CSS and optional tab/seeded-theme helpers.
 
 ## Configured setup
 
@@ -43,7 +43,7 @@ npm run benchmark
 npm pack --dry-run
 ```
 
-The package includes modular CSS, the stable standalone CSS artifact, the optional tabs module, license and installation/workshop/release documentation. Demo fonts, branding assets, playground code and Storybook dependencies stay outside the runtime package. The package-consumer test installs a tarball into an independent Vite app and checks all public entry points, including scoped names.
+The package includes modular CSS, the stable standalone CSS artifact, the optional tabs and seeded-theme modules, license and installation/workshop/release documentation. Demo fonts, branding assets, playground code and Storybook dependencies stay outside the runtime package. The package-consumer test installs a tarball into an independent Vite app and checks all public entry points, including scoped names.
 
 ## 4. Publish the first version
 
@@ -78,7 +78,7 @@ npm version patch
 git push origin HEAD --follow-tags
 ```
 
-Create and publish a GitHub Release using that version's tag (`v0.2.0`, for example) and targeting the default branch. `publish.yml` checks out the exact tag, verifies that the commit belongs to the default branch and the tag matches `package.json`, reruns the complete quality checks, then publishes to npm using OIDC. Stable versions use `latest`; prereleases use `next`. The publish step skips lifecycle scripts because the build and tests have already finished. It does not run on ordinary pushes or pull requests. To retry an existing tag after repairing the workflow, select **Actions → Publish npm package → Run workflow** on the default branch and supply the existing tag. This uses the current workflow while preserving the tagged package source. Check that the version is absent from npm before retrying; never move a published version tag.
+Create and publish a GitHub Release using that version's tag (`v0.3.0`, for example) and targeting the default branch. `publish.yml` checks out the exact tag, verifies that the commit belongs to the default branch and the tag matches `package.json`, reruns the complete quality checks, then publishes to npm using OIDC. Stable versions use `latest`; prereleases use `next`. The publish step skips lifecycle scripts because the build and tests have already finished. It does not run on ordinary pushes or pull requests. To retry an existing tag after repairing the workflow, select **Actions → Publish npm package → Run workflow** on the default branch and supply the existing tag. This uses the current workflow while preserving the tagged package source. Check that the version is absent from npm before retrying; never move a published version tag.
 
 After the initial manual version is published, do not trigger an automated publication of the same version. npm version numbers cannot be reused. If a workflow fails after publication, check the registry before retrying.
 
