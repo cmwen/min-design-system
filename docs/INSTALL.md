@@ -12,12 +12,12 @@ npm run check
 npm pack
 ```
 
-`npm pack` runs the production build through `prepack` and writes `cmwen-min-design-system-0.1.1.tgz`. It includes modular CSS, the standalone bundle, the tab helper, the MIT license, and these instructions. It excludes the playground, Storybook, demo brand icon, fonts, and development dependencies. Nothing is published to npm.
+`npm pack` runs the production build through `prepack` and writes `cmwen-min-design-system-0.2.0.tgz`. It includes modular CSS, the standalone bundle, the tab helper, the MIT license, and these instructions. It excludes the playground, Storybook, demo brand icon, fonts, and development dependencies. Nothing is published to npm.
 
 Copy that file to your other app and install it:
 
 ```sh
-npm install ./vendor/cmwen-min-design-system-0.1.1.tgz
+npm install ./vendor/cmwen-min-design-system-0.2.0.tgz
 ```
 
 Commit the tarball (if using a local vendor path) and your lockfile so CI can reproduce the installation. Increment the version before distributing a changed package; replace the tarball and reinstall deliberately rather than reusing a mutable URL.
@@ -101,3 +101,51 @@ Try the components at your actual container widths and with keyboard/reduced mot
 Follow [RELEASE.md](RELEASE.md) to configure the repository and npm package name, enable GitHub Pages, publish the first version, and configure OIDC trusted publishing for subsequent GitHub Releases. The package is configured as `@cmwen/min-design-system` in the public repository `cmwen/min-design-system`. See [VALIDATION.md](VALIDATION.md) for remote publication and deployment verification.
 
 Install registry releases with `npm install @cmwen/min-design-system` and use the same imports shown above.
+
+## Integrating dense application screens
+
+The [app integration example](../examples/integration.html) and Storybook’s **Components / App integration** show these recipes together. All behavior remains in your app; no JavaScript is required for styling.
+
+Set `data-ff-density="compact"` on a theme boundary or section. It reduces control padding, card padding, and layout gaps. Nest `data-ff-density="comfortable"` to restore the defaults. Buttons, inputs, selects, and textareas accept `data-ff-size="sm|lg"`; omit it for the density default. Compact controls retain a 44px minimum when any coarse pointer is available. Checkbox/radio targets should use a padded label, as in the native control recipes.
+
+Override `--ff-card-padding`, `--ff-layout-gap`, `--ff-control-min-height`, `--ff-button-min-height`, `--ff-control-padding-block`, `--ff-control-padding-inline`, and `--ff-button-padding-inline` for app-specific spacing. Existing `--ff-gap` overrides layout gaps. On a square icon button, only the minimum height controls its dimensions; it stays at least 44px.
+
+```html
+<section class="ff-theme ff-stack" data-ff-density="compact">
+  <button
+    class="ff-button ff-button-icon ff-button-secondary"
+    type="button"
+    aria-label="Refresh connections"
+  >
+    <svg aria-hidden="true" viewBox="0 0 24 24"><!-- your icon --></svg>
+  </button>
+  <button class="ff-button ff-button-danger" type="button">Revoke access</button>
+  <span class="ff-tag" data-ff-tone="success">Connected</span>
+</section>
+```
+
+Use `data-ff-tone="neutral|info|success|warning|danger"` on `.ff-tag`, `.ff-pill`, or `.ff-alert`. Both themes provide `--ff-tone-{tone}-fg`, `--ff-tone-{tone}-bg`, and `--ff-tone-{tone}-border`. Map your app’s statuses onto these tones and always include meaningful text. Destructive buttons use `--ff-color-danger`, `--ff-color-danger-hover`, and `--ff-color-on-danger`, with hover, active, focus, and native disabled states. Give icon buttons an accessible name and hide decorative icons from assistive technology.
+
+Use a real button with `.ff-selectable` and `aria-pressed` for independent card selection. Add `.ff-list-row` for a horizontal wrapping row and `.ff-metadata` for secondary text. The recipe supplies hover, focus, selected, and native disabled states. Keep actions outside the selection button; nested interactive controls are invalid. For single-choice selection, use native radios and their labels instead of adding radio roles to this toggle recipe.
+
+```html
+<button class="ff-selectable ff-list-row" type="button" aria-pressed="true">
+  <strong>Design workspace</strong>
+  <span class="ff-metadata">Selected · Updated today</span>
+</button>
+<div class="ff-field">
+  <label class="ff-field-label" for="connection">Connection name</label>
+  <input
+    class="ff-input"
+    id="connection"
+    aria-invalid="true"
+    aria-describedby="connection-help connection-error"
+  />
+  <p class="ff-field-help" id="connection-help">Use a recognizable name.</p>
+  <p class="ff-field-error" id="connection-error">Enter a name.</p>
+</div>
+```
+
+`.ff-field` groups labels, controls, help, and validation text. Your app sets `aria-invalid` and connects visible messages with `aria-describedby`. `.ff-alert` accepts a message and optional dismiss button; your app handles dismissal, the `hidden` attribute, and focus restoration. Use `role="alert"` for an urgent newly inserted error or `role="status"` for a non-urgent update. Static notices need neither live role. `.ff-busy` supplies a static progress marker beside visible loading text; use `role="status"` to announce changes and `aria-busy="true"` on the updating region. For busy buttons, supply progress text, set `aria-busy`, and disable repeat submissions in your app. `.ff-empty-state` groups an explanation and optional next action.
+
+`.ff-sidebar-nav` and `.ff-bottom-nav` style native navigation landmarks containing `.ff-nav-link` anchors. Set `aria-current="page"` on the active link and optionally include a textual `.ff-pill` count. Wrap both navigations in `.ff-responsive-nav` to show the sidebar above 640px and bottom navigation at 640px or below. Use matching destinations and labels; only the visible landmark is exposed to assistive technology. Bottom navigation stays in document flow, wraps long content, and includes safe-area bottom padding. If your app fixes it to the viewport, reserve matching content space and check focused controls remain visible. Safe-area values require a host viewport declaration with `viewport-fit=cover`.

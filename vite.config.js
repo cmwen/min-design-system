@@ -64,6 +64,7 @@ export default defineConfig({
         dashboard: resolve('examples/dashboard.html'),
         forms: resolve('examples/forms.html'),
         components: resolve('examples/components.html'),
+        integration: resolve('examples/integration.html'),
         documentation: resolve('docs/index.html'),
         performance: resolve('examples/performance.html'),
       },

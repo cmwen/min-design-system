@@ -32,7 +32,7 @@ npm run test:package                # Install and build an isolated Vite consume
 
 ## Install in your other apps
 
-Run `npm pack` to create `cmwen-min-design-system-0.1.1.tgz`, then `npm install ./vendor/cmwen-min-design-system-0.1.1.tgz` in your other app. Import `@cmwen/min-design-system` for modular CSS or `@cmwen/min-design-system/forest-and-fern.css` for the standalone bundle. See [the complete installation guide](docs/INSTALL.md) for theme boundaries, native recipes, optional tabs, framework integration and versioning. The [release guide](docs/RELEASE.md) covers GitHub Pages and npm trusted publishing. Install registry releases with `npm install @cmwen/min-design-system`.
+Run `npm pack` to create `cmwen-min-design-system-0.2.0.tgz`, then `npm install ./vendor/cmwen-min-design-system-0.2.0.tgz` in your other app. Import `@cmwen/min-design-system` for modular CSS or `@cmwen/min-design-system/forest-and-fern.css` for the standalone bundle. See [the complete installation guide](docs/INSTALL.md) for theme boundaries, native recipes, optional tabs, framework integration and versioning. The [release guide](docs/RELEASE.md) covers GitHub Pages and npm trusted publishing. Install registry releases with `npm install @cmwen/min-design-system`.
 
 ## Use in plain HTML
 
@@ -68,7 +68,7 @@ export function Actions() {
 }
 ```
 
-This example does not add React to the package. Alternatively vendor the `src/` directory at the **v0.1.1** release/tag or a recorded commit, and import `src/index.css` through your bundler. Prefer versioned artifacts over mutable Pages/main URLs. The package is configured as `@cmwen/min-design-system`, with public releases built from `cmwen/min-design-system` on GitHub. Follow [the release guide](docs/RELEASE.md).
+This example does not add React to the package. Alternatively vendor the `src/` directory at the **v0.2.0** release/tag or a recorded commit, and import `src/index.css` through your bundler. Prefer versioned artifacts over mutable Pages/main URLs. The package is configured as `@cmwen/min-design-system`, with public releases built from `cmwen/min-design-system` on GitHub. Follow [the release guide](docs/RELEASE.md).
 
 ## Themes, geometry, and motion
 
@@ -130,4 +130,8 @@ Style a real `<dialog>` with `.ff-dialog`, open it with `showModal()`, and close
 
 The component playground lets you change wave edges, corners, and motion across the collection. Overlays can opt into `.ff-wave-surface` decoration without masking content. Accordions use native details/summary. `initTabs` from `@cmwen/min-design-system/tabs` is an optional enhancement with keyboard support and cleanup. Layout uses `.ff-stack`, `.ff-cluster`, `.ff-grid`, `.ff-sidebar-layout`, and `.ff-container`. Short entrance motion respects system/local reduced motion; the only ambient loop is explicitly enabled on `.ff-brand-mark`, with visible pause/resume and hidden-tab pausing in the demo. The temporary [cmwen.dev icon](https://cmwen.dev/favicon.svg) is a demo-only asset, excluded from the package; see [asset provenance](docs/ASSETS.md).
 
-The [Storybook HTML/Vite](https://storybook.js.org/docs/builders/vite) workshop has 20 isolated foundation and component stories, live Actions, replayable interaction tests, controls, documentation, and accessibility tooling. See the [workshop guide](docs/STORYBOOK.md) for token inspection, event payloads, test replay and CI. Theme, wave, and motion toolbar settings apply to every story. Storybook development dependencies stay outside the installable CSS package.
+The [Storybook HTML/Vite](https://storybook.js.org/docs/builders/vite) workshop has 21 isolated foundation and component stories, live Actions, replayable interaction tests, controls, documentation, and accessibility tooling. See the [workshop guide](docs/STORYBOOK.md) for token inspection, event payloads, test replay and CI. Theme, wave, and motion toolbar settings apply to every story. Storybook development dependencies stay outside the installable CSS package.
+
+## Application integration recipes
+
+[Integration examples](examples/integration.html) cover inherited compact density, small/large controls, semantic badges and alerts, icon/destructive actions, selectable cards and rows, field feedback, busy/empty states, and responsive sidebar/bottom navigation. See the [integration API and native markup](docs/INSTALL.md#integrating-dense-application-screens) and Storybook’s **Components / App integration**. These additions preserve the CSS-only package and application-owned behavior.

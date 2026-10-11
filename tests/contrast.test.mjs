@@ -53,3 +53,17 @@ for (const [theme, tokens] of Object.entries(themes)) {
       assert.ok(contrast(tokens[fg], tokens[bg]) >= 4.5));
   }
 }
+
+for (const [theme, tokens] of Object.entries(themes)) {
+  for (const tone of ['neutral', 'info', 'success', 'warning', 'danger']) {
+    test(`${theme}: ${tone} tone text meets 4.5:1 and border meets 3:1`, () => {
+      assert.ok(contrast(tokens[`tone-${tone}-fg`], tokens[`tone-${tone}-bg`]) >= 4.5);
+      assert.ok(contrast(tokens[`tone-${tone}-border`], tokens[`tone-${tone}-bg`]) >= 3);
+    });
+  }
+  for (const background of ['color-danger', 'color-danger-hover']) {
+    test(`${theme}: destructive button text on ${background} meets 4.5:1`, () => {
+      assert.ok(contrast(tokens['color-on-danger'], tokens[background]) >= 4.5);
+    });
+  }
+}

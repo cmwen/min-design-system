@@ -22,7 +22,7 @@
   position: relative;
   isolation: isolate;
   min-width: 0;
-  padding: var(--ff-space-6);
+  padding: var(--ff-card-padding);
   border-radius: var(--ff-shape-radius);
 }
 

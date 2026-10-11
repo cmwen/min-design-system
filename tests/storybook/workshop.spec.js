@@ -15,6 +15,7 @@ const stories = [
 ];
 const foundations = ['colors', 'typography', 'spacing', 'geometry', 'motion'];
 const ids = [
+  'components-app-integration--recipes',
   ...stories.map((story) => `components-recipes--${story}`),
   ...foundations.map((story) => `foundations-design-tokens--${story}`),
   ...['buttons', 'layout-primitives', 'native-inputs', 'surfaces'].map(

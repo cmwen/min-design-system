@@ -17,6 +17,12 @@
   --ff-space-6: 1.5rem;
   --ff-space-8: 2rem;
   --ff-space-12: 3rem;
+  --ff-control-min-height: 46px;
+  --ff-button-min-height: 44px;
+  --ff-control-padding-block: 0.65rem;
+  --ff-control-padding-inline: 0.9rem;
+  --ff-button-padding-inline: 1.2rem;
+  --ff-card-padding: var(--ff-space-6);
   --ff-border-width: 1.5px;
   --ff-control-radius: 17px 26px 12px 23px / 20px 16px 24px 18px;
   --ff-shape-radius: 29px 42px 23px 37px / 36px 25px 40px 27px;
@@ -27,4 +33,24 @@
   --ff-duration: var(--ff-duration-subtle);
   --ff-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ff-hover-lift: -2px;
+}
+
+/* Density is inherited; an explicit comfortable boundary resets compact values. */
+[data-ff-density='compact'] {
+  --ff-control-min-height: 36px;
+  --ff-button-min-height: 36px;
+  --ff-control-padding-block: 0.35rem;
+  --ff-control-padding-inline: 0.65rem;
+  --ff-button-padding-inline: 0.85rem;
+  --ff-card-padding: var(--ff-space-4);
+  --ff-layout-gap: var(--ff-space-2);
+}
+[data-ff-density='comfortable'] {
+  --ff-layout-gap: initial;
+  --ff-control-min-height: 46px;
+  --ff-button-min-height: 44px;
+  --ff-control-padding-block: 0.65rem;
+  --ff-control-padding-inline: 0.9rem;
+  --ff-button-padding-inline: 1.2rem;
+  --ff-card-padding: var(--ff-space-6);
 }
