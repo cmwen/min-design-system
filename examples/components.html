@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en" data-ff-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Forest & Fern: a CSS-first organic design system for native HTML. Light and dark forest themes, softly asymmetric surfaces, and accessible controls."
+    />
+    <title>Components · Forest &amp; Fern</title>
+    <link rel="icon" type="image/svg+xml" href="/fern.svg" />
+    <link rel="stylesheet" href="../src/index.css" />
+    <link rel="stylesheet" href="../playground/styles.css" />
+  </head>
+  <body class="ff-theme">
+    <a class="skip-link ff-button" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand ff-link" href="../index.html"
+          ><span class="brand-mark ff-brand-mark" data-ff-ambient="true" aria-hidden="true"
+            ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false">
+              <g
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="18"
+              >
+                <path d="M169 38h122l-61 98z" />
+                <path d="M94 172 376 158 130 470" />
+                <path d="M94 172c8 19 27 35 53 45" />
+                <path d="M90 224 130 470" />
+                <path d="M90 224 426 462" />
+              </g></svg></span
+          ><span>Forest &amp; Fern<small>A LITTLE WILD, BY DESIGN</small></span></a
+        >
+        <nav aria-label="Design system">
+          <div class="nav-group">
+            <p class="nav-label">The Playground</p>
+            <a class="ff-link" href="../index.html#overview"
+              ><span class="nav-icon" aria-hidden="true">◈</span>Overview</a
+            ><a class="ff-link" href="../index.html#theme-lab"
+              ><span class="nav-icon" aria-hidden="true">◐</span>Theme Lab</a
+            ><a class="ff-link" href="../index.html#shape-lab"
+              ><span class="nav-icon" aria-hidden="true">▱</span>Shape Lab</a
+            ><a class="ff-link" href="../index.html#motion-lab"
+              ><span class="nav-icon" aria-hidden="true">↝</span>Motion Lab</a
+            ><a class="ff-link" href="../index.html#native-controls"
+              ><span class="nav-icon" aria-hidden="true">⊞</span>Native Controls</a
+            >
+          </div>
+        </nav>
+        <nav aria-label="Resources">
+          <div class="nav-group">
+            <p class="nav-label">In the wild</p>
+            <a class="ff-link" href="../examples/components.html" aria-current="page"
+              ><span class="nav-icon" aria-hidden="true">⊡</span>Components</a
+            >
+            <a class="ff-link" href="../examples/dashboard.html"
+              ><span class="nav-icon" aria-hidden="true">◫</span>Dashboard</a
+            ><a class="ff-link" href="../examples/forms.html"
+              ><span class="nav-icon" aria-hidden="true">☷</span>Forms</a
+            ><a class="ff-link" href="../docs/index.html"
+              ><span class="nav-icon" aria-hidden="true">↗</span>Documentation</a
+            >
+          </div>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="badge">● &nbsp; v0.1.0 · CSS first</span>
+          <p>Rooted in native HTML.<br />Made to grow with your app.</p>
+        </div>
+      </aside>
+      <main class="site-main" id="main">
+        <header class="topbar">
+          <p>Forest &amp; Fern <span aria-hidden="true"> / </span> Components</p>
+          <button
+            class="ff-button ff-button-secondary"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            ☾ &nbsp; Dark mode
+          </button>
+        </header>
+        <section class="hero">
+          <span class="eyebrow">Component collection / First growth</span>
+          <h1 class="ff-heading">Everyday pieces.<br />Same forest.</h1>
+          <p>
+            Tables, charts, cards, and a little room for conversation. Familiar patterns with the
+            Forest &amp; Fern feel.
+          </p>
+          <div class="hero-actions">
+            <a class="ff-button ff-button-secondary" href="#tables">Tables</a
+            ><a class="ff-button ff-button-secondary" href="#charts">Charts</a
+            ><a class="ff-button ff-button-secondary" href="#overlays">Modals &amp; popups</a>
+            <a class="ff-button ff-button-secondary" href="#disclosure">Accordions &amp; tabs</a
+            ><a class="ff-button ff-button-secondary" href="#cards-tags">Cards &amp; tags</a
+            ><a class="ff-button ff-button-secondary" href="#layouts">Layout</a
+            ><a class="ff-button ff-button-secondary" href="#branding">Branding</a>
+          </div>
+        </section>
+        <section class="section component-appearance" aria-labelledby="appearance-title">
+          <h2 id="appearance-title">Make it feel like you.</h2>
+          <div class="component-toolbar">
+            <label class="field" for="component-wave"
+              >Wave edges<select class="ff-select" id="component-wave">
+                <option value="off">Off</option>
+                <option value="soft">Soft waves</option>
+                <option value="expressive">Expressive waves</option>
+              </select></label
+            ><label class="field" for="component-shape"
+              >Corners<select class="ff-select" id="component-shape">
+                <option value="organic">Organic</option>
+                <option value="soft">Soft</option>
+                <option value="expressive">Expressive</option>
+                <option value="none">Square</option>
+              </select></label
+            ><label class="field" for="component-motion"
+              >Motion<select class="ff-select" id="component-motion">
+                <option value="organic">Organic</option>
+                <option value="subtle">Subtle</option>
+                <option value="expressive">Expressive</option>
+                <option value="none">Still</option>
+              </select></label
+            >
+          </div>
+          <p class="small">
+            Try the same surfaces across every pattern. Text and controls stay clear; your
+            reduced-motion preference takes priority.
+          </p>
+        </section>
+        <section class="section" id="tables">
+          <div class="section-heading">
+            <h2>01 · Tables</h2>
+            <p>Useful details, clearly arranged.</p>
+          </div>
+          <article class="ff-card">
+            <div class="component-toolbar">
+              <label class="field" for="table-search"
+                >Search projects<input
+                  class="ff-input"
+                  id="table-search"
+                  type="search"
+                  placeholder="Name or owner…" /></label
+              ><label class="check-line"
+                ><input class="ff-switch" id="table-compact" type="checkbox" role="switch" />Compact
+                rows</label
+              ><output class="small" id="table-count" for="table-search">6 projects</output>
+            </div>
+            <p class="small" id="table-hint">
+              Choose a column heading to sort. On smaller screens, scroll within the table to see
+              every column.
+            </p>
+            <div
+              class="ff-table-region"
+              role="region"
+              aria-label="Project table"
+              aria-describedby="table-hint"
+              tabindex="0"
+            >
+              <table class="ff-table" id="project-table">
+                <caption>
+                  Projects taking root
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" aria-sort="ascending" data-column="name">
+                      <button class="ff-table-sort" type="button" data-sort="name">
+                        Project <span aria-hidden="true">↑</span>
+                      </button>
+                    </th>
+                    <th scope="col" data-column="owner">
+                      <button class="ff-table-sort" type="button" data-sort="owner">
+                        Owner <span aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col">Status</th>
+                    <th scope="col" data-ff-numeric data-column="budget">
+                      <button class="ff-table-sort" type="button" data-sort="budget">
+                        Budget <span aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="project-rows"></tbody>
+              </table>
+            </div>
+            <p class="small" id="table-empty" hidden>
+              No projects match. Try another name or owner.
+            </p>
+            <p class="sr-only" role="status" id="table-status"></p>
+          </article>
+        </section>
+        <section class="section" id="charts">
+          <div class="section-heading">
+            <h2>02 · Charts</h2>
+            <p>The story behind the numbers.</p>
+          </div>
+          <article class="ff-card">
+            <div class="component-toolbar">
+              <div>
+                <h3>Revenue through the season</h3>
+                <p class="small">May–October · mock data</p>
+              </div>
+              <label class="field" for="chart-type"
+                >Chart style<select class="ff-select" id="chart-type">
+                  <option value="line">Line</option>
+                  <option value="bar">Bar</option>
+                </select></label
+              >
+            </div>
+            <figure class="component-chart">
+              <svg
+                class="ff-chart"
+                id="revenue-chart"
+                viewBox="0 0 600 260"
+                role="img"
+                aria-labelledby="revenue-chart-title revenue-chart-description"
+              >
+                <title id="revenue-chart-title">Monthly revenue, line chart</title>
+                <desc id="revenue-chart-description">
+                  Revenue rises from $72,000 in May to $128,400 in October, with a dip in July.
+                  Exact values are in the data table below.
+                </desc>
+                <g id="revenue-chart-marks"></g>
+              </svg>
+              <figcaption class="small">
+                A growing season, with a small dip in July. October revenue reached $128,400.
+              </figcaption>
+            </figure>
+            <details class="chart-data">
+              <summary>View revenue data</summary>
+              <div class="ff-table-region" role="region" aria-label="Revenue data" tabindex="0">
+                <table class="ff-table">
+                  <caption>
+                    Monthly revenue in US dollars
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Month</th>
+                      <th scope="col" data-ff-numeric>Revenue</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">May</th>
+                      <td data-ff-numeric>$72,000</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">June</th>
+                      <td data-ff-numeric>$88,000</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">July</th>
+                      <td data-ff-numeric>$82,000</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">August</th>
+                      <td data-ff-numeric>$106,000</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">September</th>
+                      <td data-ff-numeric>$114,000</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">October</th>
+                      <td data-ff-numeric>$128,400</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+            <p class="sr-only" role="status" id="chart-status"></p>
+          </article>
+        </section>
+        <section class="section" id="overlays">
+          <div class="section-heading">
+            <h2>03 · Modals &amp; popups</h2>
+            <p>A moment of focus. A small next step.</p>
+          </div>
+          <div class="grid-2">
+            <article class="ff-card">
+              <span class="eyebrow">Modal dialog</span>
+              <h3>Give an idea a name.</h3>
+              <p class="muted">
+                A focused form with space for a decision. Save it, cancel, or press Escape to
+                return.
+              </p>
+              <button class="ff-button" type="button" id="open-project-dialog">
+                New project ↗
+              </button>
+            </article>
+            <article class="ff-card">
+              <span class="eyebrow">Contextual popup</span>
+              <h3>A few handy actions.</h3>
+              <p class="muted">
+                Keep small choices nearby. Open the popup, choose an action, or tap outside to
+                dismiss.
+              </p>
+              <button
+                class="ff-button ff-button-secondary"
+                type="button"
+                id="project-actions-trigger"
+                popovertarget="project-actions"
+              >
+                Project actions <span aria-hidden="true">▾</span>
+              </button>
+              <div
+                class="ff-popover ff-wave-surface"
+                popover="auto"
+                id="project-actions"
+                aria-labelledby="popup-title"
+              >
+                <div class="ff-overlay-header">
+                  <h2 id="popup-title">Project actions</h2>
+                  <button
+                    type="button"
+                    class="ff-button ff-button-quiet"
+                    popovertarget="project-actions"
+                    popovertargetaction="hide"
+                    aria-label="Close project actions"
+                  >
+                    ×
+                  </button>
+                </div>
+                <p class="small">Organic Studio · demo actions</p>
+                <div class="ff-popover-actions">
+                  <button
+                    class="ff-button ff-button-quiet"
+                    type="button"
+                    data-popup-action="Duplicate project"
+                    autofocus
+                  >
+                    Duplicate project</button
+                  ><button
+                    class="ff-button ff-button-quiet"
+                    type="button"
+                    data-popup-action="Copy project name"
+                  >
+                    Copy project name
+                  </button>
+                </div>
+                <p class="small" id="popup-fallback" hidden>
+                  Your browser shows these actions inline.
+                </p>
+              </div>
+            </article>
+          </div>
+          <div class="status" role="status" id="component-status">
+            Try a project dialog or open the action popup.
+          </div>
+        </section>
+        <dialog
+          class="ff-dialog ff-wave-surface"
+          id="project-dialog"
+          aria-labelledby="dialog-title"
+          aria-describedby="dialog-description"
+        >
+          <form method="dialog" id="dialog-form">
+            <div class="ff-overlay-header">
+              <h2 id="dialog-title">A new beginning</h2>
+              <button
+                class="ff-button ff-button-quiet"
+                type="button"
+                id="dialog-close"
+                aria-label="Close new project dialog"
+              >
+                ×
+              </button>
+            </div>
+            <p class="small" id="dialog-description">
+              Name your next project. This demo keeps the result here and sends nothing.
+            </p>
+            <label class="field" for="dialog-project-name"
+              >Project name (required)<input
+                class="ff-input"
+                id="dialog-project-name"
+                name="project"
+                required
+                maxlength="80"
+                placeholder="e.g. Fern Journal"
+                autofocus /></label
+            ><label class="field" for="dialog-project-kind"
+              >Project type<select class="ff-select" name="kind" id="dialog-project-kind">
+                <option>Website</option>
+                <option>Dashboard</option>
+                <option>Design system</option>
+              </select></label
+            >
+            <div class="ff-overlay-actions">
+              <button class="ff-button ff-button-secondary" type="button" id="dialog-cancel">
+                Cancel</button
+              ><button class="ff-button" type="submit" value="save">Create project</button>
+            </div>
+          </form>
+        </dialog>
+        <section class="section" id="disclosure">
+          <div class="section-heading">
+            <h2>04 · Accordions &amp; tabs</h2>
+            <p>One thing at a time.</p>
+          </div>
+          <div class="ff-grid">
+            <article class="ff-card">
+              <h3>A few useful answers</h3>
+              <details class="ff-accordion">
+                <summary>Can I use this without a framework?</summary>
+                <div class="ff-accordion-content">
+                  <p>Yes. Add the CSS and use native HTML. Your app keeps its own behavior.</p>
+                </div>
+              </details>
+              <details class="ff-accordion">
+                <summary>What happens on a small screen?</summary>
+                <div class="ff-accordion-content">
+                  <p>Layouts wrap, tables scroll locally, and overlays stay within the viewport.</p>
+                </div>
+              </details>
+              <details class="ff-accordion">
+                <summary>Can I turn off the movement?</summary>
+                <div class="ff-accordion-content">
+                  <p>
+                    Choose “Still” above. Your system’s reduced-motion setting always takes
+                    priority.
+                  </p>
+                </div>
+              </details>
+            </article>
+            <article class="ff-card" data-ff-tabs="Project details">
+              <h3>A place for every detail</h3>
+              <div class="ff-tab-list">
+                <a
+                  class="ff-tab"
+                  id="tab-overview"
+                  href="#panel-overview"
+                  aria-controls="panel-overview"
+                  >Overview</a
+                ><a class="ff-tab" id="tab-notes" href="#panel-notes" aria-controls="panel-notes"
+                  >Notes</a
+                ><a
+                  class="ff-tab"
+                  id="tab-activity"
+                  href="#panel-activity"
+                  aria-controls="panel-activity"
+                  >Activity</a
+                >
+              </div>
+              <section class="ff-tab-panel" id="panel-overview">
+                <h4>Organic Studio</h4>
+                <p>A small creative workspace, ready for its next season.</p>
+                <span class="ff-tag">Active project</span>
+              </section>
+              <section class="ff-tab-panel" id="panel-notes">
+                <h4>Field notes</h4>
+                <p>
+                  Keep the first release focused. Start with the tools people reach for every day.
+                </p>
+              </section>
+              <section class="ff-tab-panel" id="panel-activity">
+                <h4>Recent activity</h4>
+                <p>Today · Added the first component collection.</p>
+              </section>
+            </article>
+          </div>
+        </section>
+        <section class="section" id="cards-tags">
+          <div class="section-heading">
+            <h2>05 · Cards, pills &amp; tags</h2>
+            <p>Little pieces with room to breathe.</p>
+          </div>
+          <div class="ff-grid">
+            <article class="ff-card ff-stack">
+              <span class="eyebrow">A project card</span>
+              <h3>Grow something useful.</h3>
+              <p>Compose a title, a little context, and one clear next step.</p>
+              <div class="ff-cluster">
+                <span class="ff-tag">Design</span><span class="ff-tag">3 collaborators</span>
+              </div>
+              <a class="ff-button" href="../examples/dashboard.html">Visit the dashboard</a>
+            </article>
+            <article class="ff-card ff-stack">
+              <h3>Quick choices</h3>
+              <p>Tags describe. Toggle pills make a choice.</p>
+              <div class="ff-cluster" role="group" aria-label="Project filters">
+                <button class="ff-pill" type="button" aria-pressed="true" data-demo-pill>
+                  Design</button
+                ><button class="ff-pill" type="button" aria-pressed="false" data-demo-pill>
+                  Development</button
+                ><button class="ff-pill" type="button" aria-pressed="false" data-demo-pill>
+                  Writing
+                </button>
+              </div>
+              <div class="ff-cluster">
+                <span class="ff-pill">6 projects</span><span class="ff-tag">Ready to share</span>
+              </div>
+              <p class="small" id="pill-status" role="status">Selected: Design.</p>
+            </article>
+          </div>
+        </section>
+        <section class="section" id="layouts">
+          <div class="section-heading">
+            <h2>06 · Layout</h2>
+            <p>Structure that follows the space.</p>
+          </div>
+          <div class="ff-sidebar-layout">
+            <aside class="ff-card ff-stack" aria-label="Example project context">
+              <h3>The workspace</h3>
+              <span class="ff-tag">Organic Studio</span>
+              <p>A sidebar and main area stack naturally when space gets tight.</p>
+            </aside>
+            <article class="ff-card ff-stack">
+              <h3>Good company</h3>
+              <p>
+                Stack for vertical rhythm. Cluster for wrapping actions. Grid for cards that adapt
+                to their container.
+              </p>
+              <div class="ff-grid" style="--ff-grid-min: 10rem">
+                <div class="layout-tile ff-stack">
+                  <strong>Stack</strong><span>Steady vertical spacing</span>
+                </div>
+                <div class="layout-tile ff-stack">
+                  <strong>Grid</strong><span>Columns that fit</span>
+                </div>
+              </div>
+              <div class="ff-cluster">
+                <button class="ff-button" type="button" data-layout-action>Try an action</button
+                ><span class="small" id="layout-status" role="status"
+                  >Everything has its place.</span
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="section" id="branding">
+          <div class="section-heading">
+            <h2>07 · A quiet signature</h2>
+            <p>A little life in the corner.</p>
+          </div>
+          <article class="ff-card branding-demo">
+            <span class="ff-brand-mark" id="ambient-brand" data-ff-ambient="true" aria-hidden="true"
+              ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false">
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="18"
+                >
+                  <path d="M169 38h122l-61 98z" />
+                  <path d="M94 172 376 158 130 470" />
+                  <path d="M94 172c8 19 27 35 53 45" />
+                  <path d="M90 224 130 470" />
+                  <path d="M90 224 426 462" />
+                </g></svg
+            ></span>
+            <div>
+              <h3>Min Wen</h3>
+              <p class="muted">Your site’s mark, with a slow, gentle drift.</p>
+              <button
+                class="ff-button ff-button-secondary"
+                type="button"
+                id="ambient-toggle"
+                aria-pressed="false"
+              >
+                Pause logo animation
+              </button>
+              <p class="small">
+                Movement pauses while this tab is hidden and respects reduced motion.
+              </p>
+            </div>
+          </article>
+        </section>
+        <section class="section">
+          <article class="ff-card">
+            <h2>Take these patterns with you.</h2>
+            <p class="muted">
+              Each pattern uses the same tokens and native HTML. Keep your app’s own data and
+              behavior, and bring the forest along.
+            </p>
+            <a class="ff-link" href="../docs/index.html#components"
+              >Component recipes &amp; API ↗</a
+            >
+          </article>
+        </section>
+        <footer class="site-footer">
+          <span>Forest &amp; Fern · A little wild, by design.</span
+          ><a class="ff-link" href="../docs/index.html#licensing">MIT licensed · v0.1.0</a>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="../playground/components.js"></script>
+  </body>
+</html>

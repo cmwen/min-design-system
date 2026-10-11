@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" data-ff-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Forest & Fern: a CSS-first organic design system for native HTML. Light and dark forest themes, softly asymmetric surfaces, and accessible controls."
+    />
+    <title>Forms · Forest &amp; Fern</title>
+    <link rel="icon" type="image/svg+xml" href="/fern.svg" />
+    <link rel="stylesheet" href="../src/index.css" />
+    <link rel="stylesheet" href="../playground/styles.css" />
+  </head>
+  <body class="ff-theme">
+    <a class="skip-link ff-button" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand ff-link" href="../index.html"
+          ><span class="brand-mark" aria-hidden="true">✳</span
+          ><span>Forest &amp; Fern<small>A LITTLE WILD, BY DESIGN</small></span></a
+        >
+        <nav aria-label="Design system">
+          <div class="nav-group">
+            <p class="nav-label">The Playground</p>
+            <a class="ff-link" href="../index.html#overview"
+              ><span class="nav-icon" aria-hidden="true">◈</span>Overview</a
+            ><a class="ff-link" href="../index.html#theme-lab"
+              ><span class="nav-icon" aria-hidden="true">◐</span>Theme Lab</a
+            ><a class="ff-link" href="../index.html#shape-lab"
+              ><span class="nav-icon" aria-hidden="true">▱</span>Shape Lab</a
+            ><a class="ff-link" href="../index.html#motion-lab"
+              ><span class="nav-icon" aria-hidden="true">↝</span>Motion Lab</a
+            ><a class="ff-link" href="../index.html#native-controls"
+              ><span class="nav-icon" aria-hidden="true">⊞</span>Native Controls</a
+            >
+          </div>
+        </nav>
+        <nav aria-label="Resources">
+          <div class="nav-group">
+            <p class="nav-label">In the wild</p>
+            <a class="ff-link" href="../examples/components.html"
+              ><span class="nav-icon" aria-hidden="true">⊡</span>Components</a
+            >
+            <a class="ff-link" href="../examples/dashboard.html"
+              ><span class="nav-icon" aria-hidden="true">◫</span>Dashboard</a
+            ><a class="ff-link" href="../examples/forms.html" aria-current="page"
+              ><span class="nav-icon" aria-hidden="true">☷</span>Forms</a
+            ><a class="ff-link" href="../docs/index.html"
+              ><span class="nav-icon" aria-hidden="true">↗</span>Documentation</a
+            >
+          </div>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="badge">● &nbsp; v0.1.0 · CSS first</span>
+          <p>Rooted in native HTML.<br />Made to grow with your app.</p>
+        </div>
+      </aside>
+      <main class="site-main" id="main">
+        <header class="topbar">
+          <p>Forest &amp; Fern <span aria-hidden="true"> / </span> Forms</p>
+          <button
+            class="ff-button ff-button-secondary"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            ☾ &nbsp; Dark mode
+          </button>
+        </header>
+        <section class="hero">
+          <span class="eyebrow">Example / A native form</span>
+          <h1 class="ff-heading">Plant something new.</h1>
+          <p>A simple project brief, with clear labels and the browser’s own validation.</p>
+        </section>
+        <div class="grid-2">
+          <form class="ff-card" id="project-form">
+            <h2>Your next project</h2>
+            <label class="field" for="project-name"
+              >Project name (required)<input
+                class="ff-input"
+                id="project-name"
+                name="project"
+                required
+                maxlength="80"
+                placeholder="e.g. Woodland Studio" /></label
+            ><label class="field" for="contact-email"
+              >Contact email (required)<input
+                class="ff-input"
+                id="contact-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                placeholder="hello@example.com"
+                aria-describedby="contact-hint"
+            /></label>
+            <p class="small" id="contact-hint">
+              A demo only. Your details stay in this browser and are never sent.
+            </p>
+            <label class="field" for="project-kind"
+              >Project type<select class="ff-select" id="project-kind" name="kind">
+                <option>Website</option>
+                <option>Dashboard</option>
+                <option>Design system</option>
+              </select></label
+            >
+            <fieldset>
+              <legend>Project pace</legend>
+              <label class="check-line"
+                ><input class="ff-radio" type="radio" name="pace" value="Steady" checked />Steady
+                growth</label
+              ><label class="check-line"
+                ><input class="ff-radio" type="radio" name="pace" value="Sprint" />A short
+                sprint</label
+              >
+            </fieldset>
+            <label class="field section" for="brief"
+              >Tell us a little more<textarea
+                class="ff-input"
+                id="brief"
+                name="brief"
+                rows="4"
+                placeholder="The seed of your idea…"
+              ></textarea></label
+            ><label class="check-line"
+              ><input class="ff-checkbox" type="checkbox" name="updates" />Include weekly progress
+              updates</label
+            ><label class="check-line"
+              ><input class="ff-switch" type="checkbox" role="switch" name="organic" checked />Use
+              organic surfaces</label
+            >
+            <div class="button-row">
+              <button class="ff-button" type="submit">Create project ↗</button
+              ><button class="ff-button ff-button-secondary" type="reset">Start over</button>
+            </div>
+          </form>
+          <div>
+            <article class="ff-card" data-ff-shape="expressive">
+              <span class="eyebrow">A thoughtful foundation</span>
+              <h2>Nothing unfamiliar.</h2>
+              <p class="muted">
+                Tab between fields. Use arrows to choose a radio option. Open the native select.
+                Submit with Enter.
+              </p>
+              <p class="muted">
+                The theme adds character. Your browser keeps doing what it does best.
+              </p>
+              <a class="ff-link" href="../docs/index.html#controls"
+                >Read the native control guide ↗</a
+              >
+            </article>
+            <div class="status" role="status" id="form-status">
+              Your new project will appear here.
+            </div>
+            <section class="ff-card section" id="project-result" hidden>
+              <h2>Ready to grow</h2>
+              <dl id="project-summary"></dl>
+            </section>
+          </div>
+        </div>
+        <footer class="site-footer">
+          <span>Forest &amp; Fern · A little wild, by design.</span
+          ><a class="ff-link" href="../docs/index.html#licensing">MIT licensed · v0.1.0</a>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="../playground/forms.js"></script>
+  </body>
+</html>

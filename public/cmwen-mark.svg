@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Min Wen</title>
+  <g
+    fill="none"
+    stroke="#000"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="18"
+  >
+    <path d="M169 38h122l-61 98z" />
+    <path d="M94 172 376 158 130 470" />
+    <path d="M94 172c8 19 27 35 53 45" />
+    <path d="M90 224 130 470" />
+    <path d="M90 224 426 462" />
+  </g>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        filter: invert(100%);
+      }
+    }
+  </style>
+</svg>

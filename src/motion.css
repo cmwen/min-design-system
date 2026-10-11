@@ -1,0 +1,155 @@
+[data-ff-motion='subtle'] {
+  --ff-duration: var(--ff-duration-subtle);
+}
+[data-ff-motion='organic'] {
+  --ff-duration: var(--ff-duration-organic);
+}
+[data-ff-motion='expressive'] {
+  --ff-duration: var(--ff-duration-expressive);
+}
+
+.ff-interactive,
+.ff-button,
+.ff-native button {
+  /* Palette changes are immediate: interpolated backgrounds can lose text contrast. */
+  transition: transform var(--ff-duration) var(--ff-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ff-interactive:hover,
+  .ff-button:not(:disabled):hover,
+  .ff-native button:not(:disabled):hover {
+    transform: translateY(var(--ff-hover-lift));
+  }
+}
+
+.ff-button:not(:disabled):active,
+.ff-native button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+[data-ff-motion='none'],
+[data-ff-reduced-motion='true'] {
+  --ff-duration: 0ms;
+  --ff-hover-lift: 0px;
+}
+
+[data-ff-motion='none'] :is(.ff-button, .ff-interactive, button),
+[data-ff-reduced-motion='true'] :is(.ff-button, .ff-interactive, button) {
+  /* biome-ignore lint/complexity/noImportantStyles: Explicit static mode must override hover and press states. */
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ff-theme {
+    --ff-duration: 0ms;
+    --ff-hover-lift: 0px;
+  }
+
+  .ff-button,
+  .ff-interactive,
+  .ff-native button,
+  .ff-switch::before {
+    /* biome-ignore lint/complexity/noImportantStyles: System reduced motion must override hover and press. */
+    transition: none !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Accessibility preference takes priority. */
+    animation: none !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Accessibility preference takes priority. */
+    transform: none !important;
+  }
+
+  .ff-switch:checked::before {
+    left: 29px;
+  }
+}
+
+/* Short entrances run once. No animated height, palette, masks, or layout. */
+@keyframes ff-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* A slow full turn of the SVG plane, with a small tilt and float. */
+@keyframes ff-brand-orbit {
+  0% {
+    transform: translateY(0) rotateX(12deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotateX(0deg) rotateY(90deg);
+  }
+  50% {
+    transform: translateY(-4px) rotateX(-12deg) rotateY(180deg);
+  }
+  75% {
+    transform: translateY(-2px) rotateX(0deg) rotateY(270deg);
+  }
+  100% {
+    transform: translateY(0) rotateX(12deg) rotateY(360deg);
+  }
+}
+.ff-dialog[open],
+.ff-tab-panel:not([hidden]),
+.ff-accordion[open] > .ff-accordion-content,
+.ff-chart-line,
+.ff-chart-bar {
+  animation: ff-enter var(--ff-duration) var(--ff-ease) both;
+}
+@supports selector(:popover-open) {
+  .ff-popover:popover-open {
+    animation: ff-enter var(--ff-duration) var(--ff-ease) both;
+  }
+}
+/* Ambient movement is explicitly opt-in and can be paused by the consumer. */
+.ff-brand-mark[data-ff-ambient='true'] {
+  perspective: 320px;
+}
+.ff-brand-mark[data-ff-ambient='true'] svg {
+  transform-origin: center;
+  animation: ff-brand-orbit 12s linear infinite;
+}
+.ff-brand-mark[data-ff-paused='true'] svg,
+.ff-brand-mark:hover svg {
+  animation-play-state: paused;
+}
+[data-ff-motion='none']
+  :is(
+    .ff-dialog,
+    .ff-popover,
+    .ff-tab-panel,
+    .ff-accordion-content,
+    .ff-chart-line,
+    .ff-chart-bar,
+    .ff-brand-mark svg
+  ),
+[data-ff-reduced-motion='true']
+  :is(
+    .ff-dialog,
+    .ff-popover,
+    .ff-tab-panel,
+    .ff-accordion-content,
+    .ff-chart-line,
+    .ff-chart-bar,
+    .ff-brand-mark svg
+  ) {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ff-dialog[open],
+  .ff-tab-panel:not([hidden]),
+  .ff-accordion[open] > .ff-accordion-content,
+  .ff-chart-line,
+  .ff-chart-bar,
+  .ff-brand-mark[data-ff-ambient='true'] svg {
+    animation: none;
+  }
+  @supports selector(:popover-open) {
+    .ff-popover:popover-open {
+      animation: none;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+docs/reference.html
+src/waves.css
+package-lock.json

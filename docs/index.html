@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en" data-ff-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Forest & Fern: a CSS-first organic design system for native HTML. Light and dark forest themes, softly asymmetric surfaces, and accessible controls."
+    />
+    <title>Documentation · Forest &amp; Fern</title>
+    <link rel="icon" type="image/svg+xml" href="/fern.svg" />
+    <link rel="stylesheet" href="../src/index.css" />
+    <link rel="stylesheet" href="../playground/styles.css" />
+  </head>
+  <body class="ff-theme">
+    <a class="skip-link ff-button" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand ff-link" href="../index.html"
+          ><span class="brand-mark" aria-hidden="true">✳</span
+          ><span>Forest &amp; Fern<small>A LITTLE WILD, BY DESIGN</small></span></a
+        >
+        <nav aria-label="Design system">
+          <div class="nav-group">
+            <p class="nav-label">The Playground</p>
+            <a class="ff-link" href="../index.html#overview"
+              ><span class="nav-icon" aria-hidden="true">◈</span>Overview</a
+            ><a class="ff-link" href="../index.html#theme-lab"
+              ><span class="nav-icon" aria-hidden="true">◐</span>Theme Lab</a
+            ><a class="ff-link" href="../index.html#shape-lab"
+              ><span class="nav-icon" aria-hidden="true">▱</span>Shape Lab</a
+            ><a class="ff-link" href="../index.html#motion-lab"
+              ><span class="nav-icon" aria-hidden="true">↝</span>Motion Lab</a
+            ><a class="ff-link" href="../index.html#native-controls"
+              ><span class="nav-icon" aria-hidden="true">⊞</span>Native Controls</a
+            >
+          </div>
+        </nav>
+        <nav aria-label="Resources">
+          <div class="nav-group">
+            <p class="nav-label">In the wild</p>
+            <a class="ff-link" href="../examples/components.html"
+              ><span class="nav-icon" aria-hidden="true">⊡</span>Components</a
+            >
+            <a class="ff-link" href="../examples/dashboard.html"
+              ><span class="nav-icon" aria-hidden="true">◫</span>Dashboard</a
+            ><a class="ff-link" href="../examples/forms.html"
+              ><span class="nav-icon" aria-hidden="true">☷</span>Forms</a
+            ><a class="ff-link" href="../docs/index.html" aria-current="page"
+              ><span class="nav-icon" aria-hidden="true">↗</span>Documentation</a
+            >
+          </div>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="badge">● &nbsp; v0.1.0 · CSS first</span>
+          <p>Rooted in native HTML.<br />Made to grow with your app.</p>
+        </div>
+      </aside>
+      <main class="site-main" id="main">
+        <header class="topbar">
+          <p>Forest &amp; Fern <span aria-hidden="true"> / </span> Documentation</p>
+          <button
+            class="ff-button ff-button-secondary"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            ☾ &nbsp; Dark mode
+          </button>
+        </header>
+        <section class="hero">
+          <span class="eyebrow">Documentation / v0.1.0</span>
+          <h1 class="ff-heading">A small foundation.<br />Room for your ideas.</h1>
+          <p>One stylesheet. Real HTML. A few deliberate choices.</p>
+        </section>
+        <article class="doc-content">
+          <h2 id="install">Installation</h2>
+          <p>
+            Build with <code>npm ci &amp;&amp; npm run build</code>. Copy
+            <code>dist/assets/forest-and-fern.css</code> into your app, or download the built bundle
+            below. No runtime JavaScript is required by the CSS package.
+          </p>
+          <p>
+            <a class="ff-link" href="../assets/forest-and-fern.css" download
+              >Download the CSS bundle ↓</a
+            >
+            (v0.1.0)
+          </p>
+          <pre><code>&lt;link rel="stylesheet" href="/assets/forest-and-fern.css"&gt;
+&lt;section class="ff-theme" data-ff-theme="light"&gt;
+  &lt;article class="ff-card" data-ff-shape="organic"&gt;
+    &lt;h2&gt;Your workspace&lt;/h2&gt;
+    &lt;button class="ff-button"&gt;Explore&lt;/button&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</code></pre>
+          <p>
+            For React, Vue, Astro, or another framework, import the same CSS and add classes to
+            native elements. React is a consumer, never a dependency:
+          </p>
+          <pre><code>import './assets/forest-and-fern.css';
+
+export function Example() {
+  return &lt;button className="ff-button"&gt;Explore&lt;/button&gt;;
+}</code></pre>
+          <p>
+            Pin <code>v0.1.0</code> when vendoring this repository’s source or release artifact. The
+            Pages download follows the default branch and can change. npm publication and tagged
+            release distribution are future release tasks; this project does not claim to be
+            published.
+          </p>
+          <h2 id="imports">Modular CSS</h2>
+          <p>
+            The build also ships <code>css/</code> with the original modules. Import
+            <code>src/index.css</code> through your bundler, or copy the whole directory and link
+            <code>css/index.css</code>. Keep the modules together so relative imports resolve.
+          </p>
+          <pre><code>@import './tokens.css';
+@import './themes.css';
+@import './typography.css';
+@import './shapes.css';
+@import './waves.css'; /* Optional; omit for the smallest footprint. */
+@import './native-controls.css';
+@import './motion.css';</code></pre>
+          <h2 id="themes">Theme boundaries &amp; scoping</h2>
+          <p>
+            Tokens have a sensible light default on <code>:root</code>. Put
+            <code>data-ff-theme="dark"</code> on the root for a whole app, or on any section for a
+            nested boundary. Both themes reset every palette token and set
+            <code>color-scheme</code> for native platform widgets.
+          </p>
+          <p>
+            <code>.ff-theme</code> applies typography, text color, and background to its container.
+            All other styling is opt-in through <code>.ff-*</code> classes. There is no global reset
+            in the library; the playground’s reset is a separate site stylesheet. Use
+            <code>.ff-native</code> only if you deliberately want element styling inside a scoped
+            container.
+          </p>
+          <pre><code>&lt;section class="ff-theme" data-ff-theme="dark"&gt;
+  A dark workspace.
+  &lt;aside class="ff-theme" data-ff-theme="light"&gt;
+    A light inset, with its own native color-scheme.
+  &lt;/aside&gt;
+&lt;/section&gt;</code></pre>
+          <h2 id="tokens">Token contract</h2>
+          <p>
+            Override public custom properties on a theme boundary or individual element. Override
+            palette tokens after a theme’s own declaration, or in an inline style. Custom palettes
+            need their own contrast checks.
+          </p>
+          <table class="api-table">
+            <thead>
+              <tr>
+                <th scope="col">Group</th>
+                <th scope="col">Public tokens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Surfaces</td>
+                <td>
+                  <code>--ff-color-bg</code>, <code>--ff-color-surface</code>,
+                  <code>--ff-color-surface-raised</code>, <code>--ff-card-bg</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Content</td>
+                <td>
+                  <code>--ff-color-text</code>, <code>--ff-color-muted</code>,
+                  <code>--ff-color-primary</code>, <code>--ff-color-primary-hover</code>,
+                  <code>--ff-color-on-primary</code>
+                </td>
+              </tr>
+              <tr>
+                <td>State</td>
+                <td>
+                  <code>--ff-color-success</code>, <code>--ff-color-warning</code>,
+                  <code>--ff-color-error</code>, <code>--ff-color-selected</code>,
+                  <code>--ff-color-on-selected</code>, <code>--ff-color-disabled</code>,
+                  <code>--ff-color-on-disabled</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Outline</td>
+                <td>
+                  <code>--ff-color-border</code>, <code>--ff-color-control-border</code>,
+                  <code>--ff-focus-ring</code>, <code>--ff-border-width</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Geometry</td>
+                <td>
+                  <code>--ff-shape-radius</code>, <code>--ff-control-radius</code>,
+                  <code>--ff-wave-mask</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Motion</td>
+                <td>
+                  <code>--ff-duration</code>, <code>--ff-duration-subtle</code>,
+                  <code>--ff-duration-organic</code>, <code>--ff-duration-expressive</code>,
+                  <code>--ff-ease</code>, <code>--ff-hover-lift</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Type &amp; spacing</td>
+                <td>
+                  <code>--ff-font-family</code>, <code>--ff-font-size-sm</code>,
+                  <code>--ff-font-size-body</code>, <code>--ff-font-size-title</code>,
+                  <code>--ff-line-height</code>, <code>--ff-line-height-heading</code>,
+                  <code>--ff-letter-spacing-heading</code>, <code>--ff-font-weight-body</code>,
+                  <code>--ff-font-weight-label</code>, <code>--ff-font-weight-heading</code>,
+                  <code>--ff-space-1/2/3/4/6/8/12</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h2 id="shapes">Shapes &amp; wave edges</h2>
+          <p>
+            Choose <code>data-ff-shape="none|soft|organic|expressive"</code> or equivalent
+            <code>.ff-shape-*</code> classes. Presets use different horizontal and vertical corner
+            radii. Shape and wave are separate choices; no positional selectors define the API.
+          </p>
+          <p>
+            Waves are off by default. Set <code>data-ff-wave="soft"</code> (strength 3),
+            <code>data-ff-wave="expressive"</code> (8), or
+            <code>data-ff-wave-strength="1"</code> through <code>"12"</code>. Use one wave attribute
+            per boundary. Strength 0, <code>data-ff-wave="off"</code>, or
+            <code>.ff-no-wave</code> disables the wave mask. Settings inherit, so opt in on a single
+            surface or a whole container.
+          </p>
+          <p>
+            Precomputed SVG silhouettes mask only the two decorative pseudo-elements. The silhouette
+            scales with the panel: values represent relative strength, not an exact displacement in
+            pixels. Very long, narrow panels may exaggerate the wave; prefer pure radii there.
+            Changing radius still changes the clipping geometry, while content and focus rings
+            remain unclipped.
+          </p>
+          <p>
+            Unsupported masks degrade to asymmetric CSS corners. No SVG filters, turbulence, or
+            continuous animation are used. Masked waves do not retain the normal box shadow. Keep
+            waves limited to deliberate showcase surfaces, and use the
+            <a class="ff-link" href="../examples/performance.html">50-surface performance page</a>
+            before enabling them broadly.
+          </p>
+          <h2 id="motion">Motion &amp; static fallback</h2>
+          <p>
+            Use <code>data-ff-motion="subtle|organic|expressive|none"</code> on a container.
+            Durations are 160, 280, and 440 ms. Only <code>.ff-interactive</code> surfaces and
+            buttons lift on hover-capable fine pointers; pressed buttons scale slightly. Native
+            focus is shown with an independent 3 px ring.
+          </p>
+          <p>
+            <code>data-ff-reduced-motion="true"</code> provides a local reduced-motion preview. The
+            system’s <code>prefers-reduced-motion: reduce</code> always removes movement even if the
+            preview is off. Switches use a brief thumb position transition only on the tiny control.
+            Static waves never animate.
+          </p>
+          <h2 id="controls">Native controls</h2>
+          <table class="api-table">
+            <thead>
+              <tr>
+                <th scope="col">Class</th>
+                <th scope="col">Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.ff-button</code></td>
+                <td>
+                  Native button, or anchor for navigation. Add <code>.ff-button-secondary</code> or
+                  <code>.ff-button-quiet</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>.ff-input</code></td>
+                <td>
+                  Text, email, search, textarea. Use native validation;
+                  <code>aria-invalid="true"</code> can expose application validation.
+                </td>
+              </tr>
+              <tr>
+                <td><code>.ff-select</code></td>
+                <td>Native select; platform dropdown and arrow retained.</td>
+              </tr>
+              <tr>
+                <td><code>.ff-radio</code>, <code>.ff-checkbox</code></td>
+                <td>
+                  Native accent-color rendering. Radio name groups and checkbox indeterminate
+                  semantics remain intact.
+                </td>
+              </tr>
+              <tr>
+                <td><code>.ff-switch</code></td>
+                <td>
+                  A native checkbox with a visual track. Add <code>role="switch"</code> for a
+                  setting that immediately turns on or off.
+                </td>
+              </tr>
+              <tr>
+                <td><code>.ff-range</code></td>
+                <td>
+                  Native slider with WebKit and Firefox tracks and thumbs. Supply a label and an
+                  output when helpful.
+                </td>
+              </tr>
+              <tr>
+                <td><code>.ff-card</code></td>
+                <td>
+                  Decorative surface. Add <code>.ff-interactive</code> only to a semantic
+                  interactive element.
+                </td>
+              </tr>
+              <tr>
+                <td><code>.ff-link</code>, <code>.ff-heading</code></td>
+                <td>Opt-in link color/focus and heading typography.</td>
+              </tr>
+              <tr>
+                <td><code>.ff-native</code></td>
+                <td>
+                  Deliberately opt in a container’s buttons, inputs, selects, textareas, and links.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Always provide labels, fieldset/legend for radio groups, real
+            <code>disabled</code> attributes, and textual error messages connected with
+            <code>aria-describedby</code>. Use 44 px label rows for small checkboxes/radios. Avoid
+            click handlers on non-semantic cards.
+          </p>
+          <h2 id="components">Common component recipes</h2>
+          <p>
+            <a class="ff-link" href="../examples/components.html"
+              >Explore the full component collection ↗</a
+            >. Import <code>components.css</code> or the full bundle. Application data and event
+            handlers belong to the consumer; no Web Components are needed for these native patterns.
+          </p>
+          <table class="api-table">
+            <thead>
+              <tr>
+                <th scope="col">Pattern</th>
+                <th scope="col">API and semantics</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tables</td>
+                <td>
+                  <code>.ff-table-region</code>, <code>.ff-table</code>,
+                  <code>.ff-table-sort</code>. Use caption, scoped headers, a labeled focusable
+                  scroll region, <code>data-ff-numeric</code> on numeric cells, and optional
+                  <code>data-ff-density="compact"</code>. Sorting updates <code>aria-sort</code> on
+                  the active column, with real buttons as triggers.
+                </td>
+              </tr>
+              <tr>
+                <td>Charts</td>
+                <td>
+                  <code>.ff-chart</code>, <code>.ff-chart-grid/line/area/bar/point</code>. Style
+                  your SVG marks; include a title/description and equivalent data table. Layout
+                  scales with a viewBox. For tiny screens or magnification, the data table remains
+                  the readable alternative.
+                </td>
+              </tr>
+              <tr>
+                <td>Modals</td>
+                <td>
+                  <code>.ff-dialog</code> on a native dialog, with
+                  <code>.ff-overlay-header</code> and <code>.ff-overlay-actions</code>. Call
+                  <code>showModal()</code> and close with <code>close()</code> or a
+                  <code>method="dialog"</code> form. Give it a heading, description and intentional
+                  initial focus. Do not set display:flex on the dialog itself or override its closed
+                  state.
+                </td>
+              </tr>
+              <tr>
+                <td>Popups</td>
+                <td>
+                  <code>.ff-popover</code>, <code>.ff-popover-actions</code>, native
+                  <code>popover="auto"</code> and <code>popovertarget</code>. The demo positions
+                  using <code>--ff-popover-left</code> and <code>--ff-popover-top</code>; content
+                  stays inside the viewport. Ordinary action buttons use normal Tab navigation, not
+                  menu roles.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Accordions use <code>details.ff-accordion</code>, a native <code>summary</code>, and
+            <code>.ff-accordion-content</code>. Tabs use <code>.ff-tab-list</code>,
+            <code>.ff-tab</code>, and <code>.ff-tab-panel</code>; the optional
+            <code>initTabs()</code> helper adds keyboard navigation, selection and cleanup. Without
+            enhancement, links point to visible panels.
+          </p>
+          <p>
+            Cards use <code>.ff-card</code>. Descriptive labels use <code>.ff-tag</code> or
+            <code>.ff-pill</code>; toggle pills are real buttons with <code>aria-pressed</code>.
+            Compose responsive layouts with <code>.ff-stack</code>, <code>.ff-cluster</code>,
+            <code>.ff-grid</code>, <code>.ff-sidebar-layout</code>, and <code>.ff-container</code>.
+            Tune <code>--ff-gap</code>, <code>--ff-grid-min</code>, and
+            <code>--ff-container-max</code> locally.
+          </p>
+          <p>
+            Ambient branding is opt-in with <code>.ff-brand-mark[data-ff-ambient="true"]</code> and
+            your own inline SVG. Provide a visible pause control using
+            <code>data-ff-paused="true"</code>, pause while the document is hidden, and retain
+            reduced-motion support. The temporary cmwen.dev mark is a demo asset, excluded from the
+            package.
+          </p>
+          <pre><code>&lt;dialog class="ff-dialog" id="confirm" aria-labelledby="confirm-title"&gt;
+  &lt;form method="dialog"&gt;
+    &lt;h2 id="confirm-title"&gt;Ready to grow?&lt;/h2&gt;
+    &lt;button class="ff-button" value="confirm"&gt;Confirm&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;
+&lt;!-- Your app calls document.querySelector('#confirm').showModal(). --&gt;</code></pre>
+          <p>
+            Overlay content uses normal theme inheritance even in the browser’s top layer. Dialogs
+            and popovers keep native semantics. Add <code>.ff-wave-surface</code> for a decorative
+            wave edge; only pseudo-elements are masked, so content and focus rings remain clear.
+            Short opening animations use the motion tokens and respect reduced motion. Tables scroll
+            locally at mobile widths; overlays have bounded width, height, and internal scrolling.
+            Unsupported popover rendering is an inline panel. If dialog support is absent, present
+            an inline form rather than building an incomplete modal substitute.
+          </p>
+          <p>
+            Browser behavior references:
+            <a
+              class="ff-link"
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog"
+              >native dialog</a
+            >
+            and
+            <a
+              class="ff-link"
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using"
+              >Popover API</a
+            >.
+          </p>
+          <h2 id="typography">Nunito &amp; font hosting</h2>
+          <p>
+            The CSS declares Nunito with a system-ui fallback and makes no network requests. To
+            self-host, obtain Nunito WOFF2 files from its official open-source distribution, include
+            the font’s SIL Open Font License 1.1, then add:
+          </p>
+          <pre><code>@font-face {
+  font-family: Nunito;
+  src: url('./nunito-variable.woff2') format('woff2');
+  font-weight: 400 900;
+  font-display: swap;
+}</code></pre>
+          <p>
+            Optional Google Fonts stylesheet:
+            <a
+              class="ff-link"
+              href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&amp;display=swap"
+              >Nunito 400–900</a
+            >. Third-party font hosting is a deliberate consumer choice. The library works offline.
+          </p>
+          <h2 id="compatibility">Accessibility &amp; browser notes</h2>
+          <p>
+            Core token pairs have automated WCAG AA contrast checks. Decorative card borders are
+            intentionally subtle; native control borders and focus rings use separate stronger
+            tokens. Disabled controls remain readable, although WCAG exempts inactive controls from
+            the contrast requirement.
+          </p>
+          <p>
+            Playwright covers Chromium, Firefox, WebKit, and emulated mobile Chromium/WebKit. WebKit
+            emulation is useful coverage, but does not replace testing real Safari, iOS, and Android
+            devices. Forced colors restores native switch rendering and system borders. No
+            cutting-edge shape() or customizable-select API is required.
+          </p>
+          <p>
+            Use <code>npm run check</code> for lint, token tests, and build;
+            <code>npm run test:browser</code> for keyboard, accessibility, layout, theme, and visual
+            checks. Chromium screenshot baselines use the bundled font and fixed viewports. Update
+            them intentionally with <code>npm run test:visual:update</code>. Performance smoke
+            results are relative measurements, not Core Web Vitals promises.
+          </p>
+          <h2 id="hosting">GitHub Pages</h2>
+          <p>
+            One Vite project builds the playground, docs, examples, stable CSS bundle, and modular
+            source. The default base is <code>/forest-and-fern/</code>. Set
+            <code>FF_BASE=/your-repository/</code> for another repo, or <code>/</code> for a custom
+            domain. The Actions workflow derives the base from the actual repository name.
+          </p>
+          <p>
+            Enable Pages with GitHub Actions as its source. The workflow checks, builds, tests, then
+            deploys the default branch with repository-provided permissions. No external hosting
+            secrets are required.
+          </p>
+          <h2 id="installation">Install &amp; explore</h2>
+          <p>
+            Run <code>npm pack</code> here, copy the versioned tarball into your app, then run
+            <code>npm install ./vendor/cmwen-min-design-system-0.1.0.tgz</code>. Import
+            <code>forest-and-fern</code> for the CSS; import <code>initTabs</code> from
+            <code>@cmwen/min-design-system/tabs</code> only when you want the optional tab behavior.
+          </p>
+          <p>
+            Use the <a class="ff-link" href="RELEASE.md">release guide</a> to publish this
+            repository on GitHub Pages and the CSS package on npm. After publication, install your
+            configured package name with <code>npm install</code>.
+          </p>
+          <p>
+            <a class="ff-link" href="INSTALL.md">Complete installation guide</a> ·
+            <a class="ff-link" href="../storybook/">Open Storybook</a> ·
+            <a class="ff-link" href="ASSETS.md">Demo asset provenance</a>
+          </p>
+          <p>
+            Start the workshop locally with <code>npm run storybook</code> on port 6006. Build it
+            with <code>npm run build-storybook</code> after the site build. Eleven isolated stories
+            include controls, documentation, accessibility tooling, and global theme/wave/motion
+            choices. <code>npm run test:package</code> verifies a separate consumer app;
+            <code>npm run test:storybook</code> verifies the static workshop. No registry
+            publication has occurred.
+          </p>
+          <h2 id="licensing">License &amp; contributions</h2>
+          <p>
+            Project code is <a class="ff-link" href="../LICENSE">MIT licensed</a>. Nunito has its
+            own <a class="ff-link" href="../fonts/OFL.txt">SIL OFL 1.1 license</a>. See the
+            repository’s LICENSE and CONTRIBUTING.md. Behavioral Web Components and npm publication
+            are future phases, reserved for a clear need.
+          </p>
+          <p>
+            To contribute, read the PRD and reference, run <code>npm run check</code> and
+            <code>npm run test:browser</code>, and review visual baselines before proposing a
+            change. Regenerate static waves with <code>node scripts/generate-waves.mjs</code> and
+            benchmark geometry or motion changes.
+          </p>
+          <p>
+            <a class="ff-link" href="../CONTRIBUTING.md">Contributor guide</a> ·
+            <a class="ff-link" href="DECISIONS.md">Architecture decisions</a> ·
+            <a class="ff-link" href="VALIDATION.md">Validation record</a>
+          </p>
+        </article>
+        <footer class="site-footer">
+          <span>Forest &amp; Fern · A little wild, by design.</span
+          ><a class="ff-link" href="../docs/index.html#licensing">MIT licensed · v0.1.0</a>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="../playground/docs.js"></script>
+  </body>
+</html>

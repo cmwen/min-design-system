@@ -1,0 +1,64 @@
+@font-face {
+  font-family: Nunito;
+  src: url('../public/fonts/nunito-latin-variable.woff2') format('woff2');
+  font-weight: 200 1000;
+  font-display: swap;
+}
+.workshop {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 2rem;
+}
+.workshop > * {
+  max-width: 60rem;
+}
+.workshop h1,
+.workshop h2,
+.workshop h3 {
+  line-height: 1.2;
+}
+.workshop a {
+  color: var(--ff-color-primary);
+}
+.workshop .ff-card > :first-child {
+  margin-top: 0;
+}
+.workshop .ff-card > :last-child {
+  margin-bottom: 0;
+}
+.workshop .ff-chart {
+  max-width: 36rem;
+}
+@media (max-width: 480px) {
+  .workshop {
+    padding: 1rem;
+  }
+}
+.token-grid {
+  --ff-grid-min: 15rem;
+}
+.token-grid code,
+.token-grid output {
+  overflow-wrap: anywhere;
+  font-size: var(--ff-font-size-sm);
+}
+.token-grid output {
+  color: var(--ff-color-muted);
+}
+.token-sample {
+  min-height: 2rem;
+}
+.token-color {
+  height: 4rem;
+  border: 1px solid var(--ff-color-control-border);
+  border-radius: var(--ff-control-radius);
+}
+.token-space {
+  background: var(--ff-color-primary);
+}
+.token-geometry {
+  position: relative;
+  isolation: isolate;
+  height: 4rem;
+  border-radius: var(--ff-shape-radius);
+}

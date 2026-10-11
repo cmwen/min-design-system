@@ -1,0 +1,26 @@
+.ff-theme {
+  font-family: var(--ff-font-family);
+  font-size: var(--ff-font-size-body);
+  font-weight: var(--ff-font-weight-body);
+  line-height: var(--ff-line-height);
+  color: var(--ff-color-text);
+  background: var(--ff-color-bg);
+}
+
+.ff-heading {
+  font-weight: var(--ff-font-weight-heading);
+  line-height: var(--ff-line-height-heading);
+  letter-spacing: var(--ff-letter-spacing-heading);
+}
+
+.ff-link,
+.ff-native a {
+  color: var(--ff-color-primary);
+  text-underline-offset: 0.2em;
+}
+
+.ff-link:focus-visible,
+.ff-native a:focus-visible {
+  outline: 3px solid var(--ff-focus-ring);
+  outline-offset: 3px;
+}

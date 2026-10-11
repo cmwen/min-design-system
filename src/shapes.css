@@ -1,0 +1,80 @@
+[data-ff-shape='none'],
+.ff-shape-none {
+  --ff-shape-radius: 0;
+}
+
+[data-ff-shape='soft'],
+.ff-shape-soft {
+  --ff-shape-radius: 18px 24px 16px 22px / 22px 18px 24px 16px;
+}
+
+[data-ff-shape='organic'],
+.ff-shape-organic {
+  --ff-shape-radius: 29px 42px 23px 37px / 36px 25px 40px 27px;
+}
+
+[data-ff-shape='expressive'],
+.ff-shape-expressive {
+  --ff-shape-radius: 48px 24px 42px 20px / 24px 46px 22px 44px;
+}
+
+.ff-card {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  padding: var(--ff-space-6);
+  border-radius: var(--ff-shape-radius);
+}
+
+/* Only decoration is masked; content and focus outlines stay unclipped. */
+:is(.ff-card, .ff-wave-surface)::before,
+:is(.ff-card, .ff-wave-surface)::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+:is(.ff-card, .ff-wave-surface)::before {
+  inset: 0;
+  background: var(--ff-color-border);
+  box-shadow: var(--ff-shadow);
+}
+
+:is(.ff-card, .ff-wave-surface)::after {
+  inset: var(--ff-border-width);
+  background: var(--ff-card-bg, var(--ff-color-surface));
+}
+
+@supports ((mask-image: none) or (-webkit-mask-image: none)) {
+  :is(.ff-card, .ff-wave-surface)::before,
+  :is(.ff-card, .ff-wave-surface)::after {
+    -webkit-mask-image: var(--ff-wave-mask);
+    mask-image: var(--ff-wave-mask);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}
+
+/* Local override works even inside a wave-enabled ancestor. */
+.ff-no-wave,
+[data-ff-wave='off'],
+[data-ff-wave-strength='0'] {
+  /* biome-ignore lint/complexity/noImportantStyles: Explicit off overrides a wave preset on the same boundary. */
+  --ff-wave-mask: none !important;
+}
+
+@media (forced-colors: active) {
+  .ff-card {
+    border: 1px solid CanvasText;
+    background: Canvas;
+  }
+
+  :is(.ff-card, .ff-wave-surface)::before,
+  :is(.ff-card, .ff-wave-surface)::after {
+    display: none;
+  }
+}

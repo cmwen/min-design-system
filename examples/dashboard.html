@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" data-ff-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Forest & Fern: a CSS-first organic design system for native HTML. Light and dark forest themes, softly asymmetric surfaces, and accessible controls."
+    />
+    <title>Dashboard · Forest &amp; Fern</title>
+    <link rel="icon" type="image/svg+xml" href="/fern.svg" />
+    <link rel="stylesheet" href="../src/index.css" />
+    <link rel="stylesheet" href="../playground/styles.css" />
+  </head>
+  <body class="ff-theme">
+    <a class="skip-link ff-button" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand ff-link" href="../index.html"
+          ><span class="brand-mark" aria-hidden="true">✳</span
+          ><span>Forest &amp; Fern<small>A LITTLE WILD, BY DESIGN</small></span></a
+        >
+        <nav aria-label="Design system">
+          <div class="nav-group">
+            <p class="nav-label">The Playground</p>
+            <a class="ff-link" href="../index.html#overview"
+              ><span class="nav-icon" aria-hidden="true">◈</span>Overview</a
+            ><a class="ff-link" href="../index.html#theme-lab"
+              ><span class="nav-icon" aria-hidden="true">◐</span>Theme Lab</a
+            ><a class="ff-link" href="../index.html#shape-lab"
+              ><span class="nav-icon" aria-hidden="true">▱</span>Shape Lab</a
+            ><a class="ff-link" href="../index.html#motion-lab"
+              ><span class="nav-icon" aria-hidden="true">↝</span>Motion Lab</a
+            ><a class="ff-link" href="../index.html#native-controls"
+              ><span class="nav-icon" aria-hidden="true">⊞</span>Native Controls</a
+            >
+          </div>
+        </nav>
+        <nav aria-label="Resources">
+          <div class="nav-group">
+            <p class="nav-label">In the wild</p>
+            <a class="ff-link" href="../examples/components.html"
+              ><span class="nav-icon" aria-hidden="true">⊡</span>Components</a
+            >
+            <a class="ff-link" href="../examples/dashboard.html" aria-current="page"
+              ><span class="nav-icon" aria-hidden="true">◫</span>Dashboard</a
+            ><a class="ff-link" href="../examples/forms.html"
+              ><span class="nav-icon" aria-hidden="true">☷</span>Forms</a
+            ><a class="ff-link" href="../docs/index.html"
+              ><span class="nav-icon" aria-hidden="true">↗</span>Documentation</a
+            >
+          </div>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="badge">● &nbsp; v0.1.0 · CSS first</span>
+          <p>Rooted in native HTML.<br />Made to grow with your app.</p>
+        </div>
+      </aside>
+      <main class="site-main" id="main">
+        <header class="topbar">
+          <p>Forest &amp; Fern <span aria-hidden="true"> / </span> Dashboard</p>
+          <button
+            class="ff-button ff-button-secondary"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            ☾ &nbsp; Dark mode
+          </button>
+        </header>
+        <section class="section">
+          <div class="dashboard-header">
+            <div>
+              <span class="eyebrow">Your workspace / Overview</span>
+              <h1 class="ff-heading">Good things are growing.</h1>
+              <p class="muted">A clear view of your business. October 2026 · mock data.</p>
+            </div>
+            <label class="field search-field" for="customer-search"
+              >Find a customer<input
+                class="ff-input"
+                type="search"
+                id="customer-search"
+                placeholder="Search by name…"
+            /></label>
+          </div>
+          <div class="grid-3">
+            <article class="ff-card" data-ff-shape="organic">
+              <div class="kpi-top">
+                <span class="small">Revenue</span
+                ><span class="kpi-symbol" aria-hidden="true">↗</span>
+              </div>
+              <p class="metric">$128.4k</p>
+              <span class="small">↗ 12.8% this month</span>
+              <div class="meter" aria-hidden="true"><span style="--meter: 75%"></span></div>
+            </article>
+            <article class="ff-card" data-ff-shape="organic">
+              <div class="kpi-top">
+                <span class="small">Active customers</span
+                ><span class="kpi-symbol" aria-hidden="true">◎</span>
+              </div>
+              <p class="metric">4,892</p>
+              <span class="small">↗ 8.2% this month</span>
+              <div class="meter" aria-hidden="true"><span style="--meter: 60%"></span></div>
+            </article>
+            <article class="ff-card" data-ff-shape="organic">
+              <div class="kpi-top">
+                <span class="small">Active projects</span
+                ><span class="kpi-symbol" aria-hidden="true">▱</span>
+              </div>
+              <p class="metric">24</p>
+              <span class="small">6 growing, 18 delivered</span>
+              <div class="meter" aria-hidden="true"><span style="--meter: 45%"></span></div>
+            </article>
+          </div>
+          <div class="dashboard-grid">
+            <div>
+              <article class="ff-card">
+                <div class="section-heading">
+                  <h2>Revenue overview</h2>
+                  <span class="badge">This season</span>
+                </div>
+                <div class="chart-summary">
+                  <span class="metric">$128,400</span
+                  ><span class="small success">↗ 12.8% from last month</span>
+                </div>
+                <svg
+                  class="chart"
+                  viewBox="0 0 600 230"
+                  role="img"
+                  aria-labelledby="chart-title chart-desc"
+                >
+                  <title id="chart-title">Revenue from May to October</title>
+                  <desc id="chart-desc">
+                    Revenue increases from 72 thousand dollars in May to 128.4 thousand dollars in
+                    October. June: 88 thousand, July: 82 thousand, August: 106 thousand, September:
+                    114 thousand.
+                  </desc>
+                  <g class="chart-grid">
+                    <path d="M45 30H585 M45 80H585 M45 130H585 M45 180H585" />
+                  </g>
+                  <g>
+                    <text x="0" y="34">150k</text>
+                    <text x="0" y="84">100k</text>
+                    <text x="5" y="134">50k</text>
+                    <text x="14" y="184">0</text>
+                  </g>
+                  <path
+                    d="M45 108C80 108 100 83 150 92S210 111 258 98S305 61 366 71S421 58 474 64S540 35 580 49L580 180H45Z"
+                    fill="currentColor"
+                    opacity="0.1"
+                  />
+                  <path
+                    d="M45 108C80 108 100 83 150 92S210 111 258 98S305 61 366 71S421 58 474 64S540 35 580 49"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="580" cy="49" r="5" fill="currentColor" />
+                  <g>
+                    <text x="45" y="214">May</text>
+                    <text x="145" y="214">Jun</text>
+                    <text x="253" y="214">Jul</text>
+                    <text x="360" y="214">Aug</text>
+                    <text x="468" y="214">Sep</text>
+                    <text x="557" y="214">Oct</text>
+                  </g>
+                </svg>
+                <details>
+                  <summary>View chart data</summary>
+                  <table class="api-table">
+                    <caption class="sr-only">
+                      Monthly revenue
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Month</th>
+                        <th scope="col">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>May</td>
+                        <td>$72,000</td>
+                      </tr>
+                      <tr>
+                        <td>June</td>
+                        <td>$88,000</td>
+                      </tr>
+                      <tr>
+                        <td>July</td>
+                        <td>$82,000</td>
+                      </tr>
+                      <tr>
+                        <td>August</td>
+                        <td>$106,000</td>
+                      </tr>
+                      <tr>
+                        <td>September</td>
+                        <td>$114,000</td>
+                      </tr>
+                      <tr>
+                        <td>October</td>
+                        <td>$128,400</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </details>
+              </article>
+              <section class="ff-card section" id="customers">
+                <div class="section-heading">
+                  <h2>Your customers</h2>
+                  <output id="customer-count" for="customer-search" class="small"
+                    >4 customers</output
+                  >
+                </div>
+                <ul class="customer-list">
+                  <li data-customer="ava green">
+                    <span class="avatar" aria-hidden="true">AV</span>
+                    <div class="customer-info">
+                      <strong>Ava Green</strong><span>ava@green.studio</span>
+                    </div>
+                    <button
+                      class="ff-button ff-button-quiet customer-view"
+                      type="button"
+                      data-name="Ava Green"
+                      data-email="ava@green.studio"
+                      data-revenue="$14,200"
+                      data-status="Active"
+                      aria-label="View Ava Green"
+                    >
+                      View ↗
+                    </button>
+                  </li>
+                  <li data-customer="oliver moss">
+                    <span class="avatar" aria-hidden="true">OL</span>
+                    <div class="customer-info">
+                      <strong>Oliver Moss</strong><span>oliver@moss.co</span>
+                    </div>
+                    <button
+                      class="ff-button ff-button-quiet customer-view"
+                      type="button"
+                      data-name="Oliver Moss"
+                      data-email="oliver@moss.co"
+                      data-revenue="$9,450"
+                      data-status="Active"
+                      aria-label="View Oliver Moss"
+                    >
+                      View ↗
+                    </button>
+                  </li>
+                  <li data-customer="isla brooks">
+                    <span class="avatar" aria-hidden="true">IS</span>
+                    <div class="customer-info">
+                      <strong>Isla Brooks</strong><span>isla@brook.studio</span>
+                    </div>
+                    <button
+                      class="ff-button ff-button-quiet customer-view"
+                      type="button"
+                      data-name="Isla Brooks"
+                      data-email="isla@brook.studio"
+                      data-revenue="$7,680"
+                      data-status="New"
+                      aria-label="View Isla Brooks"
+                    >
+                      View ↗
+                    </button>
+                  </li>
+                  <li data-customer="noah hill">
+                    <span class="avatar" aria-hidden="true">NH</span>
+                    <div class="customer-info">
+                      <strong>Noah Hill</strong><span>noah@hill.design</span>
+                    </div>
+                    <button
+                      class="ff-button ff-button-quiet customer-view"
+                      type="button"
+                      data-name="Noah Hill"
+                      data-email="noah@hill.design"
+                      data-revenue="$6,300"
+                      data-status="Active"
+                      aria-label="View Noah Hill"
+                    >
+                      View ↗
+                    </button>
+                  </li>
+                </ul>
+                <p id="no-customers" class="small" hidden>No customers match your search.</p>
+              </section>
+            </div>
+            <aside
+              class="ff-card"
+              id="customer-detail"
+              aria-labelledby="detail-name"
+              style="align-self: start"
+            >
+              <span class="eyebrow">Customer details</span>
+              <div class="section">
+                <span class="avatar" aria-hidden="true" id="detail-avatar">AV</span>
+                <h2 id="detail-name">Ava Green</h2>
+                <p class="small" id="detail-email">ava@green.studio</p>
+              </div>
+              <dl>
+                <div class="detail-row">
+                  <dt>Status</dt>
+                  <dd id="detail-status">Active</dd>
+                </div>
+                <div class="detail-row">
+                  <dt>Lifetime value</dt>
+                  <dd id="detail-revenue">$14,200</dd>
+                </div>
+                <div class="detail-row">
+                  <dt>Workspace</dt>
+                  <dd>Organic Studio</dd>
+                </div>
+              </dl>
+              <p class="small">Choose View beside a customer to explore their profile.</p>
+              <a class="ff-button ff-button-secondary" href="forms.html">Create a project ↗</a>
+            </aside>
+          </div>
+          <div class="status" role="status" id="dashboard-status">Showing all customers.</div>
+        </section>
+        <footer class="site-footer">
+          <span>Forest &amp; Fern · A little wild, by design.</span
+          ><a class="ff-link" href="../docs/index.html#licensing">MIT licensed · v0.1.0</a>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="../playground/dashboard.js"></script>
+  </body>
+</html>

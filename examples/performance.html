@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en" data-ff-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Forest & Fern: a CSS-first organic design system for native HTML. Light and dark forest themes, softly asymmetric surfaces, and accessible controls."
+    />
+    <title>Performance · Forest &amp; Fern</title>
+    <link rel="icon" type="image/svg+xml" href="/fern.svg" />
+    <link rel="stylesheet" href="../src/index.css" />
+    <link rel="stylesheet" href="../playground/styles.css" />
+  </head>
+  <body class="ff-theme">
+    <a class="skip-link ff-button" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand ff-link" href="../index.html"
+          ><span class="brand-mark" aria-hidden="true">✳</span
+          ><span>Forest &amp; Fern<small>A LITTLE WILD, BY DESIGN</small></span></a
+        >
+        <nav aria-label="Design system">
+          <div class="nav-group">
+            <p class="nav-label">The Playground</p>
+            <a class="ff-link" href="../index.html#overview"
+              ><span class="nav-icon" aria-hidden="true">◈</span>Overview</a
+            ><a class="ff-link" href="../index.html#theme-lab"
+              ><span class="nav-icon" aria-hidden="true">◐</span>Theme Lab</a
+            ><a class="ff-link" href="../index.html#shape-lab"
+              ><span class="nav-icon" aria-hidden="true">▱</span>Shape Lab</a
+            ><a class="ff-link" href="../index.html#motion-lab"
+              ><span class="nav-icon" aria-hidden="true">↝</span>Motion Lab</a
+            ><a class="ff-link" href="../index.html#native-controls"
+              ><span class="nav-icon" aria-hidden="true">⊞</span>Native Controls</a
+            >
+          </div>
+        </nav>
+        <nav aria-label="Resources">
+          <div class="nav-group">
+            <p class="nav-label">In the wild</p>
+            <a class="ff-link" href="../examples/components.html"
+              ><span class="nav-icon" aria-hidden="true">⊡</span>Components</a
+            >
+            <a class="ff-link" href="../examples/dashboard.html"
+              ><span class="nav-icon" aria-hidden="true">◫</span>Dashboard</a
+            ><a class="ff-link" href="../examples/forms.html"
+              ><span class="nav-icon" aria-hidden="true">☷</span>Forms</a
+            ><a class="ff-link" href="../docs/index.html"
+              ><span class="nav-icon" aria-hidden="true">↗</span>Documentation</a
+            >
+          </div>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="badge">● &nbsp; v0.1.0 · CSS first</span>
+          <p>Rooted in native HTML.<br />Made to grow with your app.</p>
+        </div>
+      </aside>
+      <main class="site-main" id="main">
+        <header class="topbar">
+          <p>Forest &amp; Fern <span aria-hidden="true"> / </span> Performance</p>
+          <button
+            class="ff-button ff-button-secondary"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            ☾ &nbsp; Dark mode
+          </button>
+        </header>
+        <section class="hero">
+          <h1 class="ff-heading">Fifty quiet surfaces.</h1>
+          <p>
+            Compare static waves with the pure CSS fallback. Use your browser’s performance tools
+            for paint, scroll, and memory profiling.
+          </p>
+          <label class="check-line"
+            ><input class="ff-switch" type="checkbox" role="switch" id="perf-wave" />Enable waves on
+            all 50 surfaces</label
+          >
+          <p class="small">
+            Production defaults to no waves. This page deliberately stresses the optional
+            decoration.
+          </p>
+        </section>
+        <div class="perf-grid" id="perf-surfaces" data-ff-wave="off">
+          <article class="ff-card ff-interactive">
+            <h2>Surface 1</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 2</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 3</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 4</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 5</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 6</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 7</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 8</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 9</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 10</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 11</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 12</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 13</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 14</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 15</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 16</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 17</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 18</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 19</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 20</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 21</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 22</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 23</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 24</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 25</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 26</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 27</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 28</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 29</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 30</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 31</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 32</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 33</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 34</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 35</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 36</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 37</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 38</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 39</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 40</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 41</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 42</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 43</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 44</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 45</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 46</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 47</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 48</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 49</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+          <article class="ff-card ff-interactive">
+            <h2>Surface 50</h2>
+            <p class="small">Clear content, quiet corners.</p>
+            <button class="ff-button" type="button">Explore</button>
+          </article>
+        </div>
+        <footer class="site-footer">
+          <span>Forest &amp; Fern · A little wild, by design.</span
+          ><a class="ff-link" href="../docs/index.html#licensing">MIT licensed · v0.1.0</a>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="../playground/performance.js"></script>
+  </body>
+</html>

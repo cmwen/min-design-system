@@ -1,0 +1,30 @@
+/* Public tokens are global. Element styling is always opt-in. */
+:root {
+  --ff-font-family: 'Nunito', system-ui, sans-serif;
+  --ff-font-size-sm: 0.875rem;
+  --ff-font-size-body: 1rem;
+  --ff-font-size-title: clamp(2.25rem, 5vw, 4rem);
+  --ff-line-height: 1.6;
+  --ff-line-height-heading: 1.15;
+  --ff-letter-spacing-heading: -0.04em;
+  --ff-font-weight-body: 400;
+  --ff-font-weight-label: 700;
+  --ff-font-weight-heading: 900;
+  --ff-space-1: 0.25rem;
+  --ff-space-2: 0.5rem;
+  --ff-space-3: 0.75rem;
+  --ff-space-4: 1rem;
+  --ff-space-6: 1.5rem;
+  --ff-space-8: 2rem;
+  --ff-space-12: 3rem;
+  --ff-border-width: 1.5px;
+  --ff-control-radius: 17px 26px 12px 23px / 20px 16px 24px 18px;
+  --ff-shape-radius: 29px 42px 23px 37px / 36px 25px 40px 27px;
+  --ff-wave-mask: none;
+  --ff-duration-subtle: 160ms;
+  --ff-duration-organic: 280ms;
+  --ff-duration-expressive: 440ms;
+  --ff-duration: var(--ff-duration-subtle);
+  --ff-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ff-hover-lift: -2px;
+}

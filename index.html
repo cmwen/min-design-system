@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en" data-ff-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Forest & Fern: a CSS-first organic design system for native HTML. Light and dark forest themes, softly asymmetric surfaces, and accessible controls."
+    />
+    <title>Playground · Forest &amp; Fern</title>
+    <link rel="icon" type="image/svg+xml" href="/fern.svg" />
+    <link rel="stylesheet" href="src/index.css" />
+    <link rel="stylesheet" href="playground/styles.css" />
+  </head>
+  <body class="ff-theme">
+    <a class="skip-link ff-button" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand ff-link" href="index.html"
+          ><span class="brand-mark" aria-hidden="true">✳</span
+          ><span>Forest &amp; Fern<small>A LITTLE WILD, BY DESIGN</small></span></a
+        >
+        <nav aria-label="Design system">
+          <div class="nav-group">
+            <p class="nav-label">The Playground</p>
+            <a class="ff-link" href="index.html#overview"
+              ><span class="nav-icon" aria-hidden="true">◈</span>Overview</a
+            ><a class="ff-link" href="index.html#theme-lab"
+              ><span class="nav-icon" aria-hidden="true">◐</span>Theme Lab</a
+            ><a class="ff-link" href="index.html#shape-lab"
+              ><span class="nav-icon" aria-hidden="true">▱</span>Shape Lab</a
+            ><a class="ff-link" href="index.html#motion-lab"
+              ><span class="nav-icon" aria-hidden="true">↝</span>Motion Lab</a
+            ><a class="ff-link" href="index.html#native-controls"
+              ><span class="nav-icon" aria-hidden="true">⊞</span>Native Controls</a
+            >
+          </div>
+        </nav>
+        <nav aria-label="Resources">
+          <div class="nav-group">
+            <p class="nav-label">In the wild</p>
+            <a class="ff-link" href="examples/components.html"
+              ><span class="nav-icon" aria-hidden="true">⊡</span>Components</a
+            >
+            <a class="ff-link" href="examples/dashboard.html"
+              ><span class="nav-icon" aria-hidden="true">◫</span>Dashboard</a
+            ><a class="ff-link" href="examples/forms.html"
+              ><span class="nav-icon" aria-hidden="true">☷</span>Forms</a
+            ><a class="ff-link" href="docs/index.html"
+              ><span class="nav-icon" aria-hidden="true">↗</span>Documentation</a
+            >
+          </div>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="badge">● &nbsp; v0.1.0 · CSS first</span>
+          <p>Rooted in native HTML.<br />Made to grow with your app.</p>
+        </div>
+      </aside>
+      <main class="site-main" id="main">
+        <header class="topbar">
+          <p>Forest &amp; Fern <span aria-hidden="true"> / </span> Playground</p>
+          <button
+            class="ff-button ff-button-secondary"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            ☾ &nbsp; Dark mode
+          </button>
+        </header>
+        <section class="hero" id="overview">
+          <span class="badge">✳ &nbsp; Organic UI / Theme system</span>
+          <h1 class="ff-heading">Forest &amp; Fern.<br /><em>Room to grow.</em></h1>
+          <p>
+            Soft edges. Deep greens. Familiar controls.<br />A living look and feel for the web,
+            rooted in native HTML.
+          </p>
+          <div class="hero-actions">
+            <a class="ff-button" href="#native-controls">Explore the controls ↗</a
+            ><a class="ff-button ff-button-secondary" href="docs/index.html">Start building</a>
+          </div>
+        </section>
+        <div class="grid-3">
+          <article class="ff-card">
+            <span class="eyebrow">01 / Grounded</span>
+            <h3>Native by nature</h3>
+            <p class="small">Real HTML. Familiar keyboard behavior. Your framework, your choice.</p>
+          </article>
+          <article class="ff-card" data-ff-shape="expressive">
+            <span class="eyebrow">02 / Organic</span>
+            <h3>Imperfect, on purpose</h3>
+            <p class="small">
+              Asymmetric corners and optional quiet waves. All the clarity, a little more character.
+            </p>
+          </article>
+          <article class="ff-card" data-ff-shape="soft">
+            <span class="eyebrow">03 / Considered</span>
+            <h3>A softer kind of motion</h3>
+            <p class="small">
+              Small gestures that respond to you. Still and composed when you prefer less motion.
+            </p>
+          </article>
+        </div>
+        <section class="section" id="theme-lab">
+          <div class="section-heading">
+            <h2><span class="section-index">01</span>Theme Lab</h2>
+            <p>Two palettes. One forest.</p>
+          </div>
+          <div class="grid-2">
+            <article class="theme-mini ff-theme" data-ff-theme="light">
+              <span class="eyebrow">Daylight</span>
+              <h3>A breath of fresh air</h3>
+              <p class="small">Warm paper, mossy accents, deep green ink.</p>
+              <button class="ff-button" type="button" data-notice="Light theme sample selected.">
+                Explore light ↗
+              </button>
+            </article>
+            <article class="theme-mini ff-theme" data-ff-theme="dark">
+              <span class="eyebrow">After hours</span>
+              <h3>Under the canopy</h3>
+              <p class="small">Forest shade, soft foliage, room to focus.</p>
+              <button class="ff-button" type="button" data-notice="Dark theme sample selected.">
+                Explore dark ↗
+              </button>
+            </article>
+          </div>
+          <div class="swatches" id="swatches" aria-label="Current theme palette"></div>
+          <details class="ff-card section">
+            <summary>Edit the palette</summary>
+            <p class="small">
+              Try your own colors in the preview. Custom colors are experimental; check contrast
+              before shipping.
+            </p>
+            <div class="grid-2">
+              <div>
+                <div class="palette-grid" id="palette-inputs"></div>
+                <button type="button" class="ff-button ff-button-secondary" id="palette-reset">
+                  Reset palette
+                </button>
+              </div>
+              <article class="ff-card ff-theme" id="palette-preview">
+                <h3>Your little corner of the forest</h3>
+                <p>Preview your color choices on a real surface.</p>
+                <p class="small">Muted labels should remain readable.</p>
+                <button type="button" class="ff-button" data-notice="Palette preview selected.">
+                  Keep exploring
+                </button>
+              </article>
+            </div>
+          </details>
+        </section>
+        <section class="section" id="shape-lab">
+          <div class="section-heading">
+            <h2><span class="section-index">02</span>Shape Lab</h2>
+            <p>A little less square.</p>
+          </div>
+          <div class="lab-layout">
+            <div class="ff-card">
+              <label class="field" for="shape-preset"
+                >Corner geometry<select class="ff-select" id="shape-preset">
+                  <option value="none">None</option>
+                  <option value="soft">Soft</option>
+                  <option value="organic" selected>Organic</option>
+                  <option value="expressive">Expressive</option>
+                </select></label
+              ><label class="check-line"
+                ><input
+                  class="ff-switch"
+                  id="wave-enabled"
+                  type="checkbox"
+                  role="switch"
+                  checked
+                />Wave edges</label
+              ><label class="field" for="wave-strength"
+                >Wave strength <output id="wave-output" for="wave-strength" class="output">3</output
+                ><input
+                  class="ff-range"
+                  id="wave-strength"
+                  type="range"
+                  min="0"
+                  max="12"
+                  value="3" /></label
+              ><label class="field" for="border-width"
+                >Border thickness
+                <output id="border-output" for="border-width" class="output">1.5 px</output
+                ><input
+                  class="ff-range"
+                  id="border-width"
+                  type="range"
+                  min="1"
+                  max="4"
+                  step="0.5"
+                  value="1.5" /></label
+              ><label class="field" for="sample-size"
+                >Sample width
+                <output id="size-output" for="sample-size" class="output">360 px</output
+                ><input
+                  class="ff-range"
+                  id="sample-size"
+                  type="range"
+                  min="200"
+                  max="480"
+                  step="20"
+                  value="360"
+              /></label>
+            </div>
+            <div>
+              <div class="shape-stage" id="shape-stage">
+                <article
+                  id="shape-preview"
+                  class="ff-card"
+                  data-ff-shape="organic"
+                  data-ff-wave-strength="3"
+                >
+                  <span class="shape-glyph" aria-hidden="true">✳</span>
+                  <h3>A living surface</h3>
+                  <p class="small">
+                    Quiet waves around the edges.<br />Clear, steady content within.
+                  </p>
+                  <div class="button-row">
+                    <button class="ff-button" type="button" data-notice="Shape preview explored.">
+                      Room to grow ↗
+                    </button>
+                  </div>
+                </article>
+              </div>
+              <pre class="lab-code"><code id="shape-code"></code></pre>
+              <p class="small">
+                Static SVG silhouettes, scaled to the surface. Strength is relative to size; 0
+                restores pure CSS corners. No filters touch the content.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="motion-lab">
+          <div class="section-heading">
+            <h2><span class="section-index">03</span>Motion Lab</h2>
+            <p>Small gestures. A lighter touch.</p>
+          </div>
+          <div class="ff-card">
+            <div class="grid-2">
+              <div>
+                <label class="field" for="motion-preset"
+                  >Motion intensity<select class="ff-select" id="motion-preset">
+                    <option value="none">Static · no movement</option>
+                    <option value="subtle" selected>Subtle · 160 ms</option>
+                    <option value="organic">Organic · 280 ms</option>
+                    <option value="expressive">Expressive · 440 ms</option>
+                  </select></label
+                ><label class="check-line"
+                  ><input
+                    id="reduce-motion"
+                    class="ff-switch"
+                    type="checkbox"
+                    role="switch"
+                  />Preview reduced motion</label
+                >
+                <p class="small" id="motion-note">
+                  Hover, press, or tab to the samples. Your system’s reduced-motion preference
+                  always takes priority.
+                </p>
+              </div>
+              <div class="motion-stage" id="motion-preview" data-ff-motion="subtle">
+                <button class="ff-button" type="button" id="press-sample">
+                  Give it a gentle press</button
+                ><label class="selected-demo"
+                  ><input class="ff-checkbox" type="checkbox" id="selected-sample" />Selected
+                  state</label
+                ><a class="ff-card ff-interactive ff-link" href="docs/index.html#motion"
+                  >Hover or focus this surface ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="native-controls">
+          <div class="section-heading">
+            <h2><span class="section-index">04</span>Native Controls</h2>
+            <p>Familiar roots. Fresh foliage.</p>
+          </div>
+          <form id="controls-form">
+            <div class="control-grid">
+              <section class="ff-card">
+                <h3>Radio buttons</h3>
+                <fieldset>
+                  <legend class="small">Workspace layout</legend>
+                  <label class="check-line"
+                    ><input
+                      class="ff-radio"
+                      type="radio"
+                      name="layout"
+                      value="Dashboard"
+                      checked
+                    />Dashboard</label
+                  ><label class="check-line"
+                    ><input class="ff-radio" type="radio" name="layout" value="Kanban" />Kanban
+                    board</label
+                  ><label class="check-line"
+                    ><input
+                      class="ff-radio"
+                      type="radio"
+                      name="layout"
+                      value="Timeline"
+                    />Timeline</label
+                  ><label class="check-line"
+                    ><input
+                      class="ff-radio"
+                      type="radio"
+                      name="layout"
+                      value="Archive"
+                      disabled
+                    />Archive · unavailable</label
+                  >
+                </fieldset>
+              </section>
+              <section class="ff-card">
+                <h3>Checkboxes &amp; switches</h3>
+                <label class="check-line"
+                  ><input class="ff-checkbox" type="checkbox" name="activity" checked />Show
+                  activity cards</label
+                ><label class="check-line"
+                  ><input class="ff-checkbox" type="checkbox" name="compact" />Compact
+                  navigation</label
+                ><label class="check-line"
+                  ><input class="ff-checkbox" type="checkbox" id="indeterminate" />Partially
+                  selected collection</label
+                ><label class="check-line"
+                  ><input
+                    class="ff-switch"
+                    type="checkbox"
+                    role="switch"
+                    name="suggestions"
+                    checked
+                  />Smart suggestions</label
+                ><label class="check-line"
+                  ><input class="ff-switch" type="checkbox" role="switch" disabled />Unavailable
+                  switch</label
+                ><label class="check-line"
+                  ><input class="ff-checkbox" type="checkbox" checked disabled />Locked
+                  collection</label
+                >
+              </section>
+              <section class="ff-card">
+                <h3>Range</h3>
+                <label for="density" class="small">Dashboard density</label
+                ><output class="readout" id="density-output" for="density">46%</output
+                ><input
+                  class="ff-range"
+                  id="density"
+                  name="density"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="46"
+                />
+                <p class="small">
+                  Drag, tap, or use the arrow keys. Native interaction, a softer silhouette.
+                </p>
+                <label class="field" for="disabled-range"
+                  >Locked density<input
+                    class="ff-range"
+                    id="disabled-range"
+                    type="range"
+                    value="65"
+                    disabled
+                /></label>
+              </section>
+              <section class="ff-card">
+                <h3>Text, select &amp; buttons</h3>
+                <label class="field" for="project"
+                  >Project name<input
+                    class="ff-input"
+                    id="project"
+                    name="project"
+                    value="Organic Studio"
+                    required
+                    maxlength="80"
+                    placeholder="Give your project a name" /></label
+                ><label class="field" for="priority"
+                  >Priority<select class="ff-select" id="priority" name="priority">
+                    <option>Balanced</option>
+                    <option>High</option>
+                    <option>Low</option>
+                  </select></label
+                >
+                <div class="button-row">
+                  <button class="ff-button" type="submit">Apply settings ↗</button
+                  ><button class="ff-button ff-button-secondary" type="reset">Reset</button
+                  ><button
+                    class="ff-button ff-button-quiet"
+                    type="button"
+                    data-notice="Quiet action selected."
+                  >
+                    Quiet action</button
+                  ><button class="ff-button" type="button" disabled>Unavailable</button>
+                </div>
+              </section>
+              <section class="ff-card">
+                <h3>Fields &amp; validation</h3>
+                <label class="field" for="empty-search"
+                  >Search<input
+                    class="ff-input"
+                    id="empty-search"
+                    type="search"
+                    placeholder="Find something good…" /></label
+                ><label class="field" for="invalid-email"
+                  >Email · invalid example<input
+                    class="ff-input"
+                    id="invalid-email"
+                    type="email"
+                    value="not-an-email"
+                    aria-invalid="true"
+                    aria-describedby="email-error"
+                /></label>
+                <p id="email-error" class="small error">
+                  Enter an email address, like hello@example.com.
+                </p>
+                <label class="field" for="disabled-input"
+                  >Disabled field<input
+                    class="ff-input"
+                    id="disabled-input"
+                    value="A quiet, locked field"
+                    disabled
+                /></label>
+              </section>
+              <section class="ff-card">
+                <h3>A little more room</h3>
+                <label class="field" for="notes"
+                  >Project notes<textarea
+                    class="ff-input"
+                    id="notes"
+                    name="notes"
+                    rows="3"
+                    placeholder="What would you like to grow?"
+                  ></textarea></label
+                ><label class="field" for="disabled-select"
+                  >Unavailable selection<select class="ff-select" id="disabled-select" disabled>
+                    <option>Read only</option>
+                  </select></label
+                >
+                <p class="small success">✓ Saved · success</p>
+                <p class="small warning">△ Review your changes · warning</p>
+              </section>
+            </div>
+          </form>
+        </section>
+        <div class="status" role="status" id="status" aria-live="polite">
+          Ready when you are. Try the controls or explore a lab.
+        </div>
+        <section class="section" id="dashboard-preview">
+          <div class="section-heading">
+            <h2><span class="section-index">05</span>Out in the wild</h2>
+            <p>An everyday workspace, naturally.</p>
+          </div>
+          <div class="grid-3">
+            <article class="ff-card" data-ff-shape="organic">
+              <div class="kpi-top">
+                <span class="small">Revenue</span
+                ><span class="kpi-symbol" aria-hidden="true">↗</span>
+              </div>
+              <p class="metric">$128.4k</p>
+              <span class="small">↗ 12.8% this month</span>
+              <div class="meter" aria-hidden="true"><span style="--meter: 75%"></span></div>
+            </article>
+            <article class="ff-card" data-ff-shape="organic">
+              <div class="kpi-top">
+                <span class="small">Active customers</span
+                ><span class="kpi-symbol" aria-hidden="true">◎</span>
+              </div>
+              <p class="metric">4,892</p>
+              <span class="small">↗ 8.2% this month</span>
+              <div class="meter" aria-hidden="true"><span style="--meter: 60%"></span></div>
+            </article>
+            <article class="ff-card" data-ff-shape="organic">
+              <div class="kpi-top">
+                <span class="small">Active projects</span
+                ><span class="kpi-symbol" aria-hidden="true">▱</span>
+              </div>
+              <p class="metric">24</p>
+              <span class="small">6 growing, 18 delivered</span>
+              <div class="meter" aria-hidden="true"><span style="--meter: 45%"></span></div>
+            </article>
+          </div>
+          <div class="grid-2 section">
+            <article class="ff-card">
+              <h3>Revenue, taking root</h3>
+              <p class="small">A steady season of growth · mock data</p>
+              <svg
+                class="chart"
+                viewBox="0 0 600 230"
+                role="img"
+                aria-labelledby="chart-title chart-desc"
+              >
+                <title id="chart-title">Revenue from May to October</title>
+                <desc id="chart-desc">
+                  Revenue increases from 72 thousand dollars in May to 128.4 thousand dollars in
+                  October. June: 88 thousand, July: 82 thousand, August: 106 thousand, September:
+                  114 thousand.
+                </desc>
+                <g class="chart-grid"><path d="M45 30H585 M45 80H585 M45 130H585 M45 180H585" /></g>
+                <g>
+                  <text x="0" y="34">150k</text>
+                  <text x="0" y="84">100k</text>
+                  <text x="5" y="134">50k</text>
+                  <text x="14" y="184">0</text>
+                </g>
+                <path
+                  d="M45 108C80 108 100 83 150 92S210 111 258 98S305 61 366 71S421 58 474 64S540 35 580 49L580 180H45Z"
+                  fill="currentColor"
+                  opacity="0.1"
+                />
+                <path
+                  d="M45 108C80 108 100 83 150 92S210 111 258 98S305 61 366 71S421 58 474 64S540 35 580 49"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <circle cx="580" cy="49" r="5" fill="currentColor" />
+                <g>
+                  <text x="45" y="214">May</text>
+                  <text x="145" y="214">Jun</text>
+                  <text x="253" y="214">Jul</text>
+                  <text x="360" y="214">Aug</text>
+                  <text x="468" y="214">Sep</text>
+                  <text x="557" y="214">Oct</text>
+                </g>
+              </svg>
+            </article>
+            <article class="ff-card" data-ff-shape="expressive">
+              <span class="eyebrow">Built for real work</span>
+              <h3>Make yourself at home.</h3>
+              <p class="muted">
+                A sidebar, customer search, clear metrics, and room for the details. See the system
+                working together.
+              </p>
+              <div class="button-row">
+                <a class="ff-button" href="examples/dashboard.html">Open dashboard ↗</a
+                ><a class="ff-button ff-button-secondary" href="examples/forms.html">Try a form</a>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="section" id="quick-start">
+          <div class="section-heading">
+            <h2><span class="section-index">06</span>Plant the first seed</h2>
+            <p>One stylesheet. Your HTML.</p>
+          </div>
+          <div class="ff-card">
+            <pre><code>&lt;link rel="stylesheet" href="forest-and-fern.css"&gt;
+&lt;section class="ff-theme" data-ff-theme="dark"&gt;
+  &lt;article class="ff-card" data-ff-shape="organic"&gt;
+    &lt;h2&gt;Hello, forest.&lt;/h2&gt;
+    &lt;button class="ff-button"&gt;Let’s grow&lt;/button&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</code></pre>
+            <div class="button-row">
+              <a class="ff-link" href="assets/forest-and-fern.css" download>Download CSS ↓</a
+              ><span class="small">v0.1.0 · framework-agnostic.</span
+              ><a class="ff-link" href="docs/index.html">Read the documentation ↗</a>
+            </div>
+          </div>
+        </section>
+        <footer class="site-footer">
+          <span>Forest &amp; Fern · A little wild, by design.</span
+          ><a class="ff-link" href="docs/index.html#licensing">MIT licensed · v0.1.0</a>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="playground/main.js"></script>
+  </body>
+</html>

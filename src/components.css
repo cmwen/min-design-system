@@ -1,0 +1,355 @@
+/* Native patterns, opt-in styling. Application behavior stays with the consumer. */
+.ff-table-region {
+  max-width: 100%;
+  overflow: auto;
+  border: var(--ff-border-width) solid var(--ff-color-border);
+  border-radius: var(--ff-shape-radius);
+  background: var(--ff-color-surface);
+}
+
+.ff-table-region:focus-visible {
+  outline: 3px solid var(--ff-focus-ring);
+  outline-offset: 3px;
+}
+
+.ff-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--ff-color-text);
+  text-align: start;
+  font-variant-numeric: tabular-nums;
+}
+
+.ff-table caption {
+  padding: 1rem;
+  font-weight: var(--ff-font-weight-label);
+  text-align: start;
+}
+
+.ff-table th,
+.ff-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--ff-color-border);
+  vertical-align: middle;
+}
+
+.ff-table thead {
+  background: var(--ff-color-surface-raised);
+}
+.ff-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.ff-table tbody tr:hover {
+  background: var(--ff-color-surface-raised);
+}
+.ff-table [data-ff-numeric] {
+  text-align: end;
+}
+.ff-table[data-ff-density='compact'] :is(th, td) {
+  padding-block: 0.5rem;
+}
+
+.ff-table-sort {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-weight: var(--ff-font-weight-label);
+  text-align: inherit;
+  color: var(--ff-color-primary);
+  background: transparent;
+  cursor: pointer;
+}
+
+.ff-table-sort:focus-visible {
+  outline: 3px solid var(--ff-focus-ring);
+  outline-offset: 3px;
+}
+
+.ff-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--ff-color-primary);
+}
+
+.ff-chart text {
+  font: inherit;
+  font-size: 13px;
+  fill: var(--ff-color-muted);
+}
+.ff-chart-grid {
+  stroke: var(--ff-color-border);
+  stroke-width: 1;
+}
+.ff-chart-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ff-chart-area {
+  fill: var(--ff-color-accent);
+}
+.ff-chart-bar {
+  fill: var(--ff-color-primary);
+}
+.ff-chart-point {
+  fill: var(--ff-color-surface);
+  stroke: var(--ff-color-primary);
+  stroke-width: 3;
+}
+
+.ff-dialog,
+.ff-popover {
+  box-sizing: border-box;
+  width: min(32rem, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  padding: var(--ff-space-6);
+  overflow: auto;
+  border: var(--ff-border-width) solid var(--ff-color-control-border);
+  border-radius: var(--ff-shape-radius);
+  color: var(--ff-color-text);
+  background: var(--ff-color-surface);
+  box-shadow: var(--ff-shadow);
+  font-family: var(--ff-font-family);
+  line-height: var(--ff-line-height);
+}
+
+.ff-dialog::backdrop {
+  background: rgb(0 0 0 / 45%);
+}
+.ff-dialog[data-ff-inline] {
+  position: static;
+  margin-block: 1rem;
+}
+.ff-overlay-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.ff-overlay-header h2 {
+  margin: 0;
+}
+.ff-overlay-actions {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--ff-space-6);
+}
+.ff-popover {
+  width: min(20rem, calc(100% - 2rem));
+}
+.ff-popover-actions {
+  display: grid;
+  gap: 0.5rem;
+}
+.ff-popover-actions .ff-button {
+  justify-content: start;
+  width: 100%;
+}
+
+/* Unsupported Popover API keeps the content as a readable inline panel. */
+@supports selector(:popover-open) {
+  .ff-popover[popover] {
+    position: fixed;
+    inset: auto;
+    top: var(--ff-popover-top, 1rem);
+    left: var(--ff-popover-left, 1rem);
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .ff-dialog,
+  .ff-popover {
+    padding: var(--ff-space-4);
+  }
+  .ff-overlay-actions > .ff-button {
+    flex: 1;
+  }
+}
+
+@media (forced-colors: active) {
+  .ff-dialog,
+  .ff-popover,
+  .ff-table-region {
+    border-color: CanvasText;
+  }
+  .ff-chart-line,
+  .ff-chart-point {
+    stroke: CanvasText;
+  }
+  .ff-chart-bar {
+    fill: CanvasText;
+  }
+  .ff-chart-area {
+    fill: Canvas;
+  }
+  .ff-chart-grid {
+    stroke: GrayText;
+  }
+}
+
+@supports (height: 100dvh) {
+  .ff-dialog,
+  .ff-popover {
+    max-height: calc(100dvh - 2rem);
+  }
+}
+
+/* Layout primitives work inside any host app, with no site shell required. */
+.ff-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ff-gap, var(--ff-space-4));
+}
+.ff-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ff-gap, var(--ff-space-3));
+}
+.ff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ff-grid-min, 16rem)), 1fr));
+  gap: var(--ff-gap, var(--ff-space-6));
+}
+.ff-sidebar-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ff-gap, var(--ff-space-6));
+}
+.ff-sidebar-layout > :first-child {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+.ff-sidebar-layout > :last-child {
+  flex: 3 1 24rem;
+  min-width: 0;
+}
+.ff-container {
+  width: min(100%, var(--ff-container-max, 72rem));
+  margin-inline: auto;
+}
+
+.ff-tag,
+.ff-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ff-space-2);
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--ff-color-control-border);
+  border-radius: 999px;
+  color: var(--ff-color-text);
+  background: var(--ff-color-accent);
+  font: inherit;
+  font-size: var(--ff-font-size-sm);
+  font-weight: var(--ff-font-weight-label);
+}
+.ff-tag {
+  border-radius: var(--ff-control-radius);
+}
+button.ff-pill,
+button.ff-tag {
+  min-height: 44px;
+  cursor: pointer;
+}
+.ff-pill[aria-pressed='true'] {
+  color: var(--ff-color-on-primary);
+  background: var(--ff-color-primary);
+}
+.ff-pill:focus-visible,
+.ff-tag:focus-visible,
+.ff-tab:focus-visible,
+.ff-tab-panel:focus-visible {
+  outline: 3px solid var(--ff-focus-ring);
+  outline-offset: 3px;
+}
+.ff-accordion summary {
+  padding-block: var(--ff-space-4);
+  font-weight: var(--ff-font-weight-label);
+  cursor: pointer;
+}
+.ff-accordion summary:focus-visible {
+  outline: 3px solid var(--ff-focus-ring);
+  outline-offset: 3px;
+}
+.ff-accordion-content {
+  padding-bottom: var(--ff-space-4);
+}
+.ff-accordion-content > :first-child {
+  margin-top: 0;
+}
+.ff-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ff-space-2);
+  margin-bottom: var(--ff-space-4);
+}
+.ff-tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ff-color-control-border);
+  border-radius: var(--ff-control-radius);
+  font: inherit;
+  font-weight: var(--ff-font-weight-label);
+  text-decoration: none;
+  color: var(--ff-color-text);
+  background: var(--ff-color-surface);
+}
+.ff-tab[aria-selected='true'] {
+  color: var(--ff-color-on-primary);
+  background: var(--ff-color-primary);
+}
+.ff-tab-panel[hidden] {
+  display: none;
+}
+.ff-brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: var(--ff-shape-radius);
+  background: var(--ff-color-accent);
+  color: var(--ff-color-primary);
+}
+.ff-brand-mark svg {
+  width: 70%;
+  height: 70%;
+  overflow: visible;
+}
+/* Pseudo-elements carry the wave; native top-layer positioning remains intact. */
+.ff-dialog.ff-wave-surface,
+.ff-popover.ff-wave-surface {
+  isolation: isolate;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+@media (forced-colors: active) {
+  .ff-dialog.ff-wave-surface,
+  .ff-popover.ff-wave-surface {
+    border: 1px solid CanvasText;
+    background: Canvas;
+  }
+  .ff-pill,
+  .ff-tag,
+  .ff-tab {
+    border-color: ButtonText;
+  }
+  .ff-pill[aria-pressed='true'],
+  .ff-tab[aria-selected='true'] {
+    color: HighlightText;
+    background: Highlight;
+  }
+}

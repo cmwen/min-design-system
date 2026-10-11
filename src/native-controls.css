@@ -1,0 +1,240 @@
+.ff-button,
+.ff-input,
+.ff-select,
+.ff-radio,
+.ff-checkbox,
+.ff-switch,
+.ff-range,
+.ff-native :is(button, input, select, textarea) {
+  box-sizing: border-box;
+  font: inherit;
+  accent-color: var(--ff-color-primary);
+}
+
+.ff-button,
+.ff-native button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ff-space-2);
+  min-height: 44px;
+  padding: 0.65rem 1.2rem;
+  border: var(--ff-border-width) solid transparent;
+  border-radius: var(--ff-control-radius);
+  font-weight: var(--ff-font-weight-label);
+  text-decoration: none;
+  color: var(--ff-color-on-primary);
+  background: var(--ff-color-primary);
+  cursor: pointer;
+}
+
+.ff-button:hover,
+.ff-native button:hover {
+  background: var(--ff-color-primary-hover);
+}
+
+.ff-button-secondary,
+.ff-native button.ff-button-secondary {
+  border-color: var(--ff-color-control-border);
+  color: var(--ff-color-text);
+  background: var(--ff-color-accent);
+}
+
+.ff-button-quiet,
+.ff-native button.ff-button-quiet {
+  color: var(--ff-color-primary);
+  background: transparent;
+}
+
+.ff-button-secondary:hover,
+.ff-button-quiet:hover {
+  background: var(--ff-color-surface-raised);
+}
+
+.ff-input,
+.ff-select,
+.ff-native
+  :is(
+    input:not([type='checkbox'], [type='radio'], [type='range'], [type='color'], [type='hidden']),
+    select,
+    textarea
+  ) {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 0.65rem 0.9rem;
+  border: var(--ff-border-width) solid var(--ff-color-control-border);
+  border-radius: var(--ff-control-radius);
+  color: var(--ff-color-text);
+  background: var(--ff-color-surface);
+}
+
+textarea.ff-input {
+  resize: vertical;
+}
+.ff-input::placeholder,
+.ff-native input::placeholder,
+.ff-native textarea::placeholder {
+  color: var(--ff-color-muted);
+  opacity: 1;
+}
+
+.ff-input[aria-invalid='true'],
+.ff-input:invalid:not(:placeholder-shown),
+.ff-native input[aria-invalid='true'] {
+  border-color: var(--ff-color-error);
+}
+
+.ff-radio,
+.ff-checkbox,
+.ff-native input:is([type='radio'], [type='checkbox']):not(.ff-switch) {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Native radio/checkbox rendering retains checked and indeterminate glyphs. */
+.ff-switch {
+  position: relative;
+  flex-shrink: 0;
+  appearance: none;
+  width: 58px;
+  height: 32px;
+  margin: 0;
+  border: 2px solid var(--ff-color-control-border);
+  border-radius: 18px 27px 15px 23px;
+  background: var(--ff-color-track);
+  cursor: pointer;
+}
+
+.ff-switch::before {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 44% 56% 38% 62% / 57% 40% 60% 43%;
+  background: var(--ff-color-surface);
+  transition: left var(--ff-duration) var(--ff-ease);
+  content: '';
+}
+
+.ff-switch:checked {
+  border-color: var(--ff-color-primary);
+  background: var(--ff-color-primary);
+}
+
+.ff-switch:checked::before {
+  left: 29px;
+  background: var(--ff-color-on-primary);
+}
+
+.ff-range,
+.ff-native input[type='range'] {
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ff-range::-webkit-slider-runnable-track,
+.ff-native input[type='range']::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 13px 17px 9px 13px;
+  background: var(--ff-color-track);
+}
+
+.ff-range::-moz-range-track,
+.ff-native input[type='range']::-moz-range-track {
+  height: 10px;
+  border-radius: 13px 17px 9px 13px;
+  background: var(--ff-color-track);
+}
+
+.ff-range::-webkit-slider-thumb,
+.ff-native input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -9px;
+  border: 3px solid var(--ff-color-primary);
+  border-radius: 45% 55% 38% 62% / 58% 37% 63% 42%;
+  background: var(--ff-color-surface);
+}
+
+.ff-range::-moz-range-thumb,
+.ff-native input[type='range']::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--ff-color-primary);
+  border-radius: 45% 55% 38% 62% / 58% 37% 63% 42%;
+  background: var(--ff-color-surface);
+}
+
+:is(
+  .ff-button,
+  .ff-input,
+  .ff-select,
+  .ff-radio,
+  .ff-checkbox,
+  .ff-switch,
+  .ff-range,
+  .ff-interactive
+):focus-visible,
+.ff-native :is(button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--ff-focus-ring);
+  outline-offset: 3px;
+}
+
+:is(.ff-button, .ff-input, .ff-select, .ff-switch):disabled,
+.ff-native
+  :is(
+    button,
+    input:not([type='radio'], [type='checkbox'], [type='range']),
+    select,
+    textarea
+  ):disabled {
+  color: var(--ff-color-on-disabled);
+  background: var(--ff-color-disabled);
+  cursor: not-allowed;
+}
+
+:is(.ff-radio, .ff-checkbox, .ff-range):disabled {
+  cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+  .ff-switch {
+    appearance: auto;
+    width: 24px;
+    height: 24px;
+  }
+
+  .ff-switch::before {
+    display: none;
+  }
+
+  .ff-button,
+  .ff-input,
+  .ff-select {
+    border-color: ButtonText;
+  }
+
+  .ff-range::-webkit-slider-thumb {
+    border-color: Highlight;
+  }
+  .ff-range::-moz-range-thumb {
+    border-color: Highlight;
+  }
+}
+
+/* Preserve the native hidden attribute even on controls with explicit display. */
+.ff-button[hidden],
+.ff-native button[hidden] {
+  display: none;
+}

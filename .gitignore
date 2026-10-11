@@ -1,0 +1,14 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+*.tgz
+storybook-static/
+
+# Workspace credentials and local agent configuration
+.agents/
+.codex/
+.aws/
+.env
+.env.*
+!.env.example
