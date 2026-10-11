@@ -10,7 +10,7 @@ Validated on **11 October 2026 (Australia/Sydney)** in this workspace. The appro
 | `npm run dev`                | Working Vite playground; theme/shape interactions and stable CSS download verified with no page errors                                                                                                                                 |
 | `npm run lint`               | ESLint and Biome CSS lint pass                                                                                                                                                                                                         |
 | `npm run format:check`       | Pass                                                                                                                                                                                                                                   |
-| `npm test`                   | 59 pass: 56 semantic contrast pairs and 3 CSS/package checks                                                                                                                                                                           |
+| `npm test`                   | 62 pass: 56 semantic contrast pairs, 3 CSS/package checks and 3 release checks                                                                                                                                                                           |
 | `npm run build`              | All 6 pages, stable CSS artifact, modular CSS source, font license, and site assets emitted                                                                                                                                            |
 | `npm run test:visual:update` | 8 light/dark playground/dashboard/component/modal PNG baselines generated and reviewed                                                                                                                                                 |
 | `npm run test:browser`       | 216 pass, 19 intentional skips, 0 failures across 5 browser projects                                                                                                                                                                   |
@@ -30,9 +30,9 @@ The expanded component collection adds 90 interaction, layout, fallback, and acc
 
 `npm run build-storybook` passes with 20 isolated HTML/Vite stories and generated foundation/component guides. `npm run test:storybook` covers 23 Chromium checks: every story runs its named play steps and receives WCAG scans in both themes at 320px; tabs and native overlays receive trusted keyboard checks; manager controls, global theme/wave choices, documentation, live Actions payloads and Interactions replay are verified. Play failures and incomplete runs fail browser CI. Design-token stories show resolved CSS values, and primitive stories cover buttons, inputs, layouts and shape variants. External axe scans set Storybook’s `a11y.manual` boolean for the test visit to avoid simultaneous scans; the workshop’s automatic accessibility checks remain enabled for normal use.
 
-`npm run test:package` successfully packs 18 allowed files, installs into an isolated Vite consumer, and builds modular CSS, standalone CSS, and optional tab imports with no runtime dependencies. The package excludes Storybook, demo branding, playground code, and fonts. A local versioned tarball is available; no npm registry publication occurred.
+`npm run test:package` successfully packs 20 allowed files, installs into an isolated Vite consumer, and builds modular CSS, standalone CSS, and optional tab imports with no runtime dependencies. The package excludes Storybook, demo branding, playground code, and fonts. A local versioned tarball is available; no npm registry publication occurred.
 
-The wave/motion follow-up maps soft to strength 1 and expressive to strength 3 (the former soft silhouette). Ambient branding now uses a 12-second perspective rotation. Targeted browser, accessibility and visual checks passed: 14 checks across five browser projects, with 16 intentional duplicate visual skips. They verify a computed 3D transform, perspective, pause/resume and system/local reduced motion. The 23 Storybook checks and 59 unit checks also passed; site/Storybook builds and lint passed. The local tarball was refreshed with the new CSS.
+The wave/motion follow-up maps soft to strength 1 and expressive to strength 3 (the former soft silhouette). Ambient branding now uses a 12-second perspective rotation. Targeted browser, accessibility and visual checks passed: 14 checks across five browser projects, with 16 intentional duplicate visual skips. They verify a computed 3D transform, perspective, pause/resume and system/local reduced motion. The 23 Storybook checks and 62 unit checks also passed; site/Storybook builds and lint passed. The local tarball was refreshed with the new CSS.
 
 ## Performance
 
@@ -42,10 +42,10 @@ The final isolated run used Chromium **156.0.8078.4**, at 1440×1000. Means acro
 
 | 50-surface condition | Main-thread task time per sample | Style time | Layout time |
 | -------------------- | -------------------------------- | ---------- | ----------- |
-| Waves off            | 15.35 ms                         | 0.80 ms    | 0 ms        |
-| Soft waves           | 24.81 ms                         | 1.28 ms    | 0 ms        |
+| Waves off            | 15.91 ms                         | 0.54 ms    | 0 ms        |
+| Soft waves           | 20.29 ms                         | 1.80 ms    | 0 ms        |
 
-The CSS artifact is **42,726 bytes raw / 10,246 bytes gzip** (about 10.0 KiB gzip). See [the measured JSON](performance-results.json) for all samples and limitations. These timings describe this machine and workload, not a cross-device budget. The complete CSS is below the automated **16 KiB gzip guardrail**. The normal site uses no wave masks on dashboard cards; only the Shape Lab opts in by default.
+The CSS artifact is **43,134 bytes raw / 10,340 bytes gzip** (about 10.1 KiB gzip). See [the measured JSON](performance-results.json) for all samples and limitations. These timings describe this machine and workload, not a cross-device budget. The complete CSS is below the automated **16 KiB gzip guardrail**. The normal site uses no wave masks on dashboard cards; only the Shape Lab opts in by default.
 
 This smoke test does **not** measure GPU raster/paint, hardware battery use, real-device touch latency, or Core Web Vitals. It cannot certify an FPS target. Static masks add render work, so production keeps waves off and offers explicit local fallback. Use `examples/performance.html` in browser devtools on target devices for a full paint/scroll profile before enabling waves broadly.
 
@@ -68,6 +68,6 @@ This smoke test does **not** measure GPU raster/paint, hardware battery use, rea
 
 ## Remaining release checks
 
-The workspace contains an **empty read-only `.git` placeholder**, with no actual checkout or remote. No remote deploy, release tag, repository creation, or Pages setup was performed or claimed. Attach/push to the intended single GitHub repository, enable GitHub Actions as the Pages source, and confirm the first default-branch deployment and asset URLs. The workflow automatically uses that repository’s subpath; custom domains/user sites need `FF_BASE=/`.
+The public repository [cmwen/min-design-system](https://github.com/cmwen/min-design-system) has been created and the source pushed using a temporary checkout because this workspace has a read-only `.git` placeholder. Pages is configured for GitHub Actions with HTTPS and inherits `cmwen.dev`. The first CI run exposed incomplete optional dependencies in the lockfile; a clean lockfile was generated and verified with npm 12. Remote deployment and registry publication are pending verification.
 
 Before release, check actual stable Safari and iOS Safari, Android Chrome, keyboard-only operation, VoiceOver/NVDA labels and announcements, real 200% browser zoom, and forced colors on supported hardware. The automated browser engines and emulations are useful evidence, not substitutes for those checks.

@@ -2,7 +2,7 @@
 
 One GitHub repository contains the CSS package, playground, examples and HTML/Vite Storybook. Pages publishes the site and Storybook together; npm publishes the reusable CSS and optional tab helper.
 
-## Current setup
+## Configured setup
 
 Core versions were checked against npm on 11 October 2026: Vite 8.3.4, Storybook 10.6.1 and Playwright 1.64.0 match the registry's latest tags. The lint environment helper was updated to globals 17.13.0. CI uses Node 24 and current official GitHub Actions releases; npm publishing uses npm 12.2.0. Dependabot checks npm and GitHub Actions weekly, grouping Storybook updates together.
 
@@ -27,7 +27,7 @@ Create or use the chosen repository and commit this workspace there, including `
 
 In repository **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**. On a default-branch push, `deploy.yml` runs lint, unit tests, site and Storybook builds, package-consumer validation, browser tests, Storybook interactions and a benchmark before deployment. Pull requests receive verification without deployment.
 
-Project sites derive `FF_BASE` as `/REPOSITORY/`; `OWNER.github.io` repositories use `/`. Set repository variable `FF_BASE` to override the base for a custom domain. The playground is at the Pages root; examples and documentation retain their routes; Storybook is under `storybook/`. The deployment job reports the resulting URL.
+This site inherits the account domain and is served at `https://cmwen.dev/min-design-system/` (Storybook at `https://cmwen.dev/min-design-system/storybook/`). Project sites derive `FF_BASE` as `/REPOSITORY/`; `OWNER.github.io` repositories use `/`. Set repository variable `FF_BASE` to override the base for a custom domain. The playground is at the Pages root; examples and documentation retain their routes; Storybook is under `storybook/`. The deployment job reports the resulting URL.
 
 ## 3. Validate the installable package
 
